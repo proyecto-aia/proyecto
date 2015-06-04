@@ -1,0 +1,18 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/************* Elementos DOOM *****************/
+
+
+/**************** Elementos Principales ****************/
+
+
+/**************** Clases ****************/
+div.video a img{
+	border:3px solid #FF3333;
+}
+
+div.video a img:hover {
+	border:3px solid #FFFFFF;
+}

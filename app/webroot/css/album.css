@@ -1,0 +1,137 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/************* Elementos DOOM *****************/
+
+
+/**************** Elementos Principales ****************/
+
+
+/**************** Clases ****************/
+
+.album_imagenes_fondo{
+	 background:#FFFFFF; 
+}
+
+.album Cite {
+	font-size:8pt;
+	color:#666666;
+	margin:5px 0 10px 0;
+}
+
+/*
+.album img {
+	position:relative;
+	margin:0 0 15px 15px; 
+	border:1px solid;
+	border-color:#CCCCCC;
+	border-bottom-color:#99CCFF;
+	height:300px;
+	width:400px;
+}
+*/
+
+.album table {	
+
+	text-align:justify;
+	border-bottom:solid 1px #CCCCCC;
+	border-right:solid 1px #CCCCCC;
+	cursor:default;
+}
+
+.album table tr td {
+	 background:#FFFFFF;
+}
+
+.album table:hover {
+/*
+	border-right-color:#996600;
+	border-bottom-color:#996600;	
+*/
+	border-right-color:#99CCFF;
+	border-bottom-color:#99CCFF;
+	border-bottom-width:thick;	
+}
+
+.album a {
+	color:#006699;
+	text-decoration:none;
+}
+
+.album a:hover{
+	color:#006699;
+	text-decoration:underline;
+}
+
+.album p {
+/*	
+	font-family:sans-serif;
+	font-size:14px; 
+*/
+}
+
+
+.album_fecha_portada {
+	font-family:Georgia;
+	font-size:12px;
+	/*color:#666666;*/
+	color:#FF6666;
+	font-style:italic;
+	font-weight:lighter;
+	margin:10px 0 5px 0;
+	text-indent: 0.2cm;
+}
+
+.album_fecha_view {
+	font-family:Georgia;
+	font-size:12px;
+	/*color:#666666;*/
+	color:#FF6666;
+	font-style:italic;
+	font-weight:lighter;
+	margin:0px 0 10px 0;
+	text-indent: 0.2cm;
+}
+
+.album_titulo_portada {
+	margin:0 0 5px 0;
+	color:#006699;
+	font-weight:bolder;
+	font-size:14px;
+}
+
+.album_titulo_view {
+	margin:0 0 30px 0;
+	color:#006699;
+	font-weight:bolder;
+	font-size:18px;
+}
+
+.album_resumen {
+	text-align:justify;
+	margin:5px 0 0 0;
+	font-weight:lighter;
+	font-style:italic;
+	color:#666666;
+	font-size:12px;
+}
+
+.album_descripcion {
+	text-align:justify;
+	margin:5px 0 0 0;
+	text-indent: 1.5em;
+	font-size:14px;
+}
+
+.album_link {
+	font-family:Georgia;
+	font-size:10px;
+	float:right;
+	text-decoration:none;
+	cursor:pointer;
+}
+
+.album_link a:hover{
+	text-decoration:underline;
+}

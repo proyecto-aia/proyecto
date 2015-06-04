@@ -1,0 +1,712 @@
+/*
+ *
+ * Generic CSS for CakePHP
+ *
+ * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
+ * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ *
+ * Licensed under The MIT License
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @link          http://cakephp.org CakePHP(tm) Project
+ * @package       cake
+ * @subpackage    cake.app.webroot.css
+ * @since         CakePHP(tm)
+ * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
+ */
+
+* {
+    margin:0;
+    padding:0;
+}
+
+/** General Style Info **/
+body {
+    /* background: #708090; */
+    /*color: #fff;*/
+    background: #f5f5f5;
+    /*background: url('../img/backgrounds/background45.jpg') fixed;*/
+    font-family:'lucida grande',verdana,helvetica,arial,sans-serif;
+    /*font-size:90%;*/
+    font-size:70%;
+    padding:0;
+    margin: 0;
+    height:100%;
+
+}
+a {
+    color: #003d4c;
+    /*text-decoration: underline;*/
+    text-decoration: none;
+    font-weight: bold;
+}
+a:hover {
+    color: #367889;
+    /*text-decoration:none;*/
+    text-decoration: underline;
+}
+a img {
+    border:none;
+}
+h1, h2, h3, h4 {
+    font-weight: normal;
+    margin-bottom:0.5em;
+}
+h1 {
+    background:#fff;
+    color: #003d4c;
+    /*font-size: 100%;*/
+    font-size: 70%;
+}
+h2 {
+    background:#fff;
+    /*background:#eee;*/
+    color: #e32;
+    font-family:'Gill Sans','lucida grande', helvetica, arial, sans-serif;
+    /*font-size: 190%;*/
+    font-size: 120%;    
+    font-weight: bold;    
+}
+h3 {
+    color: #993;
+    font-family:'Gill Sans','lucida grande', helvetica, arial, sans-serif;
+    /*font-size: 165%;*/
+    font-size: 95%;
+}
+h4 {
+    color: #993;
+    font-weight: normal;
+}
+ul, li {
+    margin: 0 12px;
+}
+
+/*********** Invento nuestro ***************/
+label.error {
+    clear: both;
+    text-align:left;
+    font-variant:small-caps;
+    font-style:normal;
+    font-weight:bolder;
+    /*font-size: 120%;*/
+    font-size: 120%;
+    border:2px solid #FFAEAE; 
+    background: #FEEBEB;
+    padding: 0.4em;
+}
+
+input.error {
+    border:2px solid #FFAEAE; 
+}
+
+textarea.error {
+    border:2px solid #FFAEAE; 
+}
+
+/** Layout **/
+#container {
+    text-align: left;
+    clear: both;   
+}
+
+#header{
+    clear: both;
+    /*border-radius: 5px;*/
+
+    /* cambiar backgroun color de todas las  partes: cambiar donde el color es  #f5f5f5 */    
+    /*background: #f5f5f5;*/
+    background: #E6E6FA;
+    /*background: #90EE90;*/
+    /*background: #778899;*/
+
+    /*margin: 0% 10% 1% 10%;*/
+    margin: 0;
+    padding: 0;
+    /*border:2px solid #d3d3d3;*/   
+
+}
+
+#header h1 {
+    line-height:20px;
+    background: #003d4c url('../img/cake.icon.png') no-repeat left;
+    color: #fff;
+    padding: 0% 10%;
+}
+
+#header h1 a {
+    color: #fff;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+#header h1 a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+#content{
+    /*
+        clear: both;
+        color: #333;
+        padding: 0% 10% 1% 10%; 
+        overflow: auto;
+    */
+    clear: both;
+    color: #333;
+    /*border-radius: 5px;*/
+    /*border:2px solid #d3d3d3;*/
+    border-top:1px solid #d3d3d3;
+    border-bottom:1px solid #d3d3d3;
+    /*margin: 0% 10% 1% 10%;*/ 
+    margin: 0;
+    /*padding:0% 1% 1% 1%;*/
+    padding:0;
+    min-height:35%;  
+    height:auto; 		
+    height:expression((this.scrollHeight < 34%) ? 35% : "auto") !important;
+    /* width:900px; */
+    width: auto;
+    /* cambiar backgroun color de todas las  partes: cambiar donde el color es  #f5f5f5 */    
+    background: #f5f5f5;
+
+    overflow:auto;
+    /*padding-left: 10px;
+    padding-right: 10px;*/    
+}
+
+#footer {
+    clear: both;
+    color: #333;
+    /*background: #f5f5f5;*/
+    /*background: #A52A2A;*/
+    /*background: #90EE90;*/
+    /*background: #BC8F8F;*/
+    background: #E6E6FA;
+
+    padding:0;
+    margin: 0;
+    text-align:center;
+    /*font-size:8px;*/
+    font-size:8px;
+    /*border-top:1px solid #d3d3d3;*/
+}
+
+/** containers **/
+div.form,
+div.index,
+div.view {
+    float:right;
+    width:76%;
+    border-left:1px solid #666;
+    padding:10px 2%;
+}
+div.actions {
+    float:left;
+    width:16%;
+    padding:10px 1.5%;
+}
+div.actions h3 {
+    padding-top:0;
+    color:#777;
+}
+
+
+/** Tables **/
+table {
+    /*background: #fff;*/
+    border-right:0;
+    clear: both;
+    color: #333;
+    margin-bottom: 10px;
+    width: 100%;
+}
+th {
+    border:0;
+    border-bottom:2px solid #555;
+    text-align: left;
+    padding:4px;
+}
+th a {
+    display: block;
+    padding: 2px 4px;
+    text-decoration: none;
+}
+th a.asc:after {
+    content: ' ⇣';
+}
+th a.desc:after {
+    content: ' ⇡';
+}
+table tr td {
+
+    /* cambiar backgroun color de todas las  partes: cambiar donde el color es  #f5f5f5 */    
+    background: #f5f5f5;
+
+    padding: 6px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom:1px solid #ddd;
+}
+table tr:nth-child(2n) td {
+    /* cambiar backgroun color de todas las  partes: cambiar donde el color es  #f5f5f5 */    
+    background: #f5f5f5;
+}
+table .altrow td {
+    /* cambiar backgroun color de todas las  partes: cambiar donde el color es  #f5f5f5 */    
+    background: #f5f5f5;
+}
+td.actions {
+    text-align: center;
+    white-space: nowrap;
+}
+table td.actions a {
+    margin: 0px 6px;
+    padding:2px 5px;
+}
+.cake-sql-log table {
+    background: #f4f4f4;
+}
+.cake-sql-log td {
+    padding: 4px 8px;
+    text-align: left;
+    font-family: Monaco, Consolas, "Courier New", monospaced;
+}
+.cake-sql-log caption {
+    color:#fff;
+}
+
+/** Paging **/
+div.paging {
+    background:#fff;
+    color: #ccc;
+    margin-top: 1em;
+    clear:both;
+}
+div.paging span.disabled {
+    color: #ddd;
+    display: inline;
+}
+div.paging span.current {
+    color: #c73e14;
+}
+div.paging span a {
+}
+
+/** Scaffold View **/
+dl {
+    line-height: 2em;
+    margin: 0em 0em;
+    width: 60%;
+}
+dl .altrow {
+    background: #f4f4f4;
+}
+dt {
+    font-weight: bold;
+    padding-left: 4px;
+    vertical-align: top;
+    width: 10em;
+}
+dd {
+    margin-left: 10em;
+    margin-top: -2em;
+    vertical-align: top;
+}
+
+/** Forms **/
+form {
+    clear: both;
+    margin-right: 20px;
+    padding:0;
+    width: 100%;
+}
+fieldset {
+    border: 1px solid #ccc;
+    margin-bottom: 1em;
+    padding:5px;
+    background-color:#f3f3f3;
+    border-radius: 5px;
+}
+fieldset legend {
+    border-radius: 5px;
+    background:#fff;
+    color: #e32;
+    font-size: 200%;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    padding-left:10px;
+    padding-right:10px;
+}
+fieldset fieldset {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    padding: 16px 10px;
+}
+fieldset fieldset legend {
+    font-size: 120%;
+    font-weight: normal;
+}
+fieldset fieldset div {
+    clear: left;
+    margin: 0 20px;
+}
+form div {
+    clear: both;
+    margin-bottom: 1em;
+    padding: .5em;
+    vertical-align: text-top;
+}
+form .input {
+    color: #444;
+}
+form .required {
+    font-weight: bold;
+}
+form .required label:after {
+    color: #e32;
+    content: '*';
+    display:inline;
+}
+form div.submit {
+    border: 0;
+    clear: both;
+    margin-top: 10px;
+}
+label {
+    display: block;
+    font-size: 110%;
+    margin-bottom:3px;
+    font-weight:bolder;
+}
+input, textarea {
+    clear: both;
+    font-size: 140%;
+    font-family: "frutiger linotype", "lucida grande", "verdana", sans-serif;
+    padding: 1%;
+    width:98%;
+}
+
+input:focus, textarea:focus, select:focus {
+    border: solid 3px #6dc7ec;
+}
+
+select {
+    clear: both;
+    font-size: 120%;
+    vertical-align: text-bottom;
+}
+select[multiple=multiple] {
+    width: 100%;
+}
+option {
+    font-size: 120%;
+    padding: 0 3px;
+}
+input[type=checkbox] {
+    clear: left;
+    float: left;
+    margin: 0px 6px 7px 2px;
+    width: auto;
+    border-radius: 5px;
+}
+div.checkbox label {
+    display: inline;
+}
+input[type=radio] {
+    float:left;
+    width:auto;
+    margin: 0 3px 7px 0;
+}
+div.radio label {
+    margin: 0 0 6px 20px;
+}
+input[type=submit] {
+    display: inline;
+    font-size: 110%;
+    width: auto;
+}
+
+form .submit input[type=submit] {
+    background:#62af56;
+    background: -webkit-gradient(linear, left top, left bottom, from(#a8ea9c), to(#62af56));
+    background-image: -moz-linear-gradient(top, #a8ea9c, #62af56);
+    border-color: #2d6324;
+    color: #000;
+    text-shadow: #8cee7c 0px 1px 0px;
+}
+form .submit input[type=submit]:hover {
+    background:#4ca83d;
+    background: -webkit-gradient(linear, left top, left bottom, from(#85e573), to(#4ca83d));
+    background-image: -moz-linear-gradient(top, #85e573, #4ca83d);
+}
+
+/** Notices and Errors **/
+div.message {
+    clear: both;
+    color: #fff;
+    font-size: 140%;
+    font-weight: bold; 
+    margin: 0 0 1em 0;
+    background: #c73e14;
+    padding: 5px;
+
+    font-style:normal;
+    text-align:left;
+}
+div.error-message {
+    clear: both;
+    font-size: 120%;
+    font-variant:small-caps;
+    border:2px solid #FFAEAE; 
+    background:#FEEBEB;
+
+    font-style:normal;
+    text-align:left;
+}
+p.error {
+    background-color: #e32;
+    color: #fff;
+    font-family: Courier, monospace;
+    font-size: 120%;
+    line-height: 140%;
+    padding: 0.8em;
+    margin: 1em 0;
+
+    font-style:normal;
+    text-align:left;
+}
+p.error em {
+    color: #000;
+    font-weight: normal;
+    line-height: 140%;
+
+    font-style:normal;
+    text-align:left;
+}
+.notice {
+    background: #ffcc00;
+    color: #000;
+    display: block;
+    font-family: Courier, monospace;
+    font-size: 120%;
+    line-height: 140%;
+    padding: 0.8em;
+    margin: 1em 0;
+}
+
+div.failure {
+    clear: both;
+    font-variant:small-caps;
+    font-size: 140%;
+    border:2px solid #FFAEAE; 
+    /*background:url("../img/ico-delete.gif") 10px 50% no-repeat #FEEBEB;*/
+    background:url("../img/icons/Exclamation.png") 8px 50% no-repeat #FEEBEB;
+    padding: 0.6em;
+    border-radius: 5px;
+    margin: 1em;
+}
+
+div.success {
+    clear: both;
+    font-variant:small-caps;
+    font-size: 140%;
+    border:2px solid #BBDF8D; 
+    /*background:url("../img/ico-done.gif") 10px 50% no-repeat #EAF7D9;*/
+    background:url("../img/icons/Accept.png") 8px 50% no-repeat #EAF7D9;
+    padding: 0.6em;
+    border-radius: 5px;
+    margin: 1em;
+}
+
+div.info {
+    clear: both;
+    font-variant:small-caps;
+    font-size: 140%;
+    border:2px solid #B8E2FB; 
+    /*background:url("../img/ico-info.gif") 10px 50% no-repeat #E8F6FF;*/
+    background:url("../img/icons/Information.png") 8px 50% no-repeat #E8F6FF;
+    padding: 0.6em;
+    border-radius: 5px;
+    margin: 1em;
+}
+
+div.warning {
+    clear: both;
+    font-variant:small-caps;
+    font-size: 140%;
+    border:2px solid #F2DD8C; 
+    /*background:url("../img/ico-warning.gif") 10px 50% no-repeat #FFF5CC;*/
+    background:url("../img/icons/Error.png") 8px 50% no-repeat #FFF5CC;
+    padding: 0.6em;
+    border-radius: 5px;
+    margin: 1em;
+}
+
+div.menu {
+    /*	background:#6699CC;
+    border:1px solid #666666;*/
+    clear: both;
+    background-color:#6699CC;
+    border:1px solid #666666;
+}
+
+/**  Actions  **/
+div.actions ul {
+    margin: 0;
+    padding: 0;
+}
+div.actions li {
+    margin:0 0 0.5em 0;
+    list-style-type: none;
+    white-space: nowrap;
+    padding: 0;
+}
+div.actions ul li a {
+    font-weight: normal;
+    display: block;
+    clear: both;
+}
+div.actions ul li a:hover {
+    text-decoration: underline;
+}
+
+input[type=submit],
+input[type=button],
+div.actions ul li a,
+td.actions a {
+    font-weight:normal;
+    padding: 4px 8px;
+    background:#e6e49f;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f1f1d4), to(#e6e49f));
+    background-image: -moz-linear-gradient(top, #f1f1d4, #e6e49f);
+    color:#333;
+    border:1px solid #aaac62;
+    -webkit-border-radius:8px;
+    -moz-border-radius:8px;
+    border-radius:8px;
+    text-decoration:none;
+    text-shadow: #fff 0px 1px 0px;
+    min-width: 0;
+}
+input[type=submit]:hover,
+input[type=button]:hover,
+div.actions ul li a:hover,
+td.actions a:hover {
+    background: #f0f09a;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f7f7e1), to(#eeeca9));
+}
+
+/** Related **/
+div.related {
+    clear: both;
+    display: block;
+}
+
+/** Debugging **/
+pre {
+    color: #000;
+    background: #f0f0f0;
+    padding: 1em;
+}
+pre.cake-debug {
+    background: #ffcc00;
+    font-size: 120%;
+    line-height: 140%;
+    margin-top: 1em;
+    overflow: auto;
+    position: relative;
+}
+div.cake-stack-trace {
+    background: #fff;
+    color: #333;
+    margin: 0px;
+    padding: 6px;
+    font-size: 120%;
+    line-height: 140%;
+    overflow: auto;
+    position: relative;
+}
+div.cake-code-dump pre {
+    position: relative;
+    overflow: auto;
+}
+div.cake-stack-trace pre, div.cake-code-dump pre {
+    color: #000;
+    background-color: #F0F0F0;
+    margin: 0px;
+    padding: 1em;
+    overflow: auto;
+}
+div.cake-code-dump pre, div.cake-code-dump pre code {
+    clear: both;
+    font-size: 12px;
+    line-height: 15px;
+    margin: 4px 2px;
+    padding: 4px;
+    overflow: auto;
+}
+div.cake-code-dump span.code-highlight {
+    background-color: #ff0;
+    padding: 4px;
+}
+div.code-coverage-results div.code-line {
+    padding-left:5px;
+    display:block;
+    margin-left:10px;
+}
+div.code-coverage-results div.uncovered span.content {
+    background:#ecc;
+}
+div.code-coverage-results div.covered span.content {
+    background:#cec;
+}
+div.code-coverage-results div.ignored span.content {
+    color:#aaa;
+}
+div.code-coverage-results span.line-num {
+    color:#666;
+    display:block;
+    float:left;
+    width:20px;
+    text-align:right;
+    margin-right:5px;
+}
+div.code-coverage-results span.line-num strong {
+    color:#666;
+}
+div.code-coverage-results div.start {
+    border:1px solid #aaa;
+    border-width:1px 1px 0px 1px;
+    margin-top:30px;
+    padding-top:5px;
+}
+div.code-coverage-results div.end {
+    border:1px solid #aaa;
+    border-width:0px 1px 1px 1px;
+    margin-bottom:30px;
+    padding-bottom:5px;
+}
+div.code-coverage-results div.realstart {
+    margin-top:0px;
+}
+div.code-coverage-results p.note {
+    color:#bbb;
+    padding:5px;
+    margin:5px 0 10px;
+    font-size:10px;
+}
+div.code-coverage-results span.result-bad {
+    color: #a00;
+}
+div.code-coverage-results span.result-ok {
+    color: #fa0;
+}
+div.code-coverage-results span.result-good {
+    color: #0a0;
+}
+
+/** Elements **/
+#url-rewriting-warning {
+    display: none;
+}
