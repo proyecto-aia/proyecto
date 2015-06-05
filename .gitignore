@@ -1,9 +1,9 @@
 # User specific & automatically generated files #
 #################################################
-/app/Config/database.php
-/app/tmp
-/lib/Cake/Console/Templates/skel/tmp
-/lib/Cake/Test/test_app/tmp
+##/app/Config/database.php
+##/app/tmp
+##/lib/Cake/Console/Templates/skel/tmp
+##/lib/Cake/Test/test_app/tmp
 # /plugins
 # /vendors
 # /build
@@ -20,7 +20,7 @@
 
 # IDE and editor specific files #
 #################################
-/nbproject
+##/nbproject
 # .idea
 
 # OS generated files #
@@ -31,5 +31,5 @@
 # .Spotlight-V100
 # .Trashes
 # Icon?
-ehthumbs.db
-Thumbs.db
+##ehthumbs.db
+##Thumbs.db
