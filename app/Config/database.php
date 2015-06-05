@@ -74,7 +74,7 @@ class DATABASE_CONFIG {
 		'host' => 'localhost',
 		'login' => 'root',
 		'password' => 'fedora',
-		'database' => 'proyecto-aia',
+		'database' => 'proyecto',
 		'prefix' => '',
 		'encoding' => 'utf8',
 	);
