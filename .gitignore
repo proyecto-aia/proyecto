@@ -1,9 +1,9 @@
 # User specific & automatically generated files #
 #################################################
 /app/Config/database.php
-/app/tmp/*
-/lib/Cake/Console/Templates/skel/tmp/*
-/lib/Cake/Test/test_app/tmp/*
+/app/tmp
+/lib/Cake/Console/Templates/skel/tmp
+/lib/Cake/Test/test_app/tmp
 # /plugins
 # /vendors
 # /build
@@ -13,10 +13,10 @@
 /app/webroot/img/large/*
 /app/webroot/img/medium/*
 /app/webroot/img/original/*
-/app/webroot/img/thumbnails/*
-/app/webroot/img/captcha/*
-/app/webroot/fonts/*
-/app/webroot/files/*
+/app/webroot/img/thumbnails
+/app/webroot/img/captcha
+/app/webroot/fonts
+/app/webroot/files
 
 # IDE and editor specific files #
 #################################
