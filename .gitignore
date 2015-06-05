@@ -10,13 +10,13 @@
 # /dist
 # /tags
 # *.mo
-/app/webroot/img/large
-/app/webroot/img/medium
-/app/webroot/img/original
-/app/webroot/img/thumbnails
-/app/webroot/img/captcha
-/app/webroot/fonts
-/app/webroot/files
+##/app/webroot/img/large
+##/app/webroot/img/medium
+##/app/webroot/img/original
+##/app/webroot/img/thumbnails
+##/app/webroot/img/captcha
+##/app/webroot/fonts
+##/app/webroot/files
 
 # IDE and editor specific files #
 #################################

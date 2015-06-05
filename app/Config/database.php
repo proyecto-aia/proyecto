@@ -73,7 +73,7 @@ class DATABASE_CONFIG {
 		'persistent' => false,
 		'host' => 'localhost',
 		'login' => 'root',
-		'password' => 'fedora',
+		'password' => '',
 		'database' => 'proyecto',
 		'prefix' => '',
 		'encoding' => 'utf8',
