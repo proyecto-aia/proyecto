@@ -15,7 +15,7 @@
 /app/webroot/img/original
 /app/webroot/img/thumbnails
 /app/webroot/img/captcha
-/app/webroot/fonts
+# /app/webroot/fonts
 /app/webroot/files
 
 # IDE and editor specific files #
