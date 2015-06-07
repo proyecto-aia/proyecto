@@ -39,6 +39,17 @@
  */
 class EmailConfig {
 
+	/*Creamos un objeto para el envio de mail */
+	public $gmail = array(
+		'host' => 'ssl://smtp.gmail.com',
+        'port' => 465,
+        'username' => 'el.viejo.martin.webmaster@gmail.com',
+        'password' => '1234fedora',
+        'transport' => 'Smtp',
+        );
+///////////////////////////////////////////////////////////
+
+
 	public $default = array(
 		'transport' => 'Mail',
 		'from' => 'you@localhost',

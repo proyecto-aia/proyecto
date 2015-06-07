@@ -27,7 +27,6 @@ echo $this->addScript($this->Html->script('jquery.corner'));
 			echo $this->Form->create('Publicos', array('action' => 'contacto', 'id' => 'contact'));
 			echo $this->Form->input('name',array('label' => 'Nombre*', 'class' => 'required', 'id' => 'name'));
 			echo $this->Form->input('email',array('label' => 'E-Mail*', 'class' => 'required email', 'id' => 'email'));
-			echo $this->Form->input('subject',array('label' => 'Asunto*', 'class' => 'required', 'id' => 'subject'));
 			echo $this->Form->input('message',array('type' => 'textarea', 'label' => 'Mensaje*', 'class' => 'required', 'id' => 'message'));
 		?>	
 		<?php echo $this->element('captcha'); ?>

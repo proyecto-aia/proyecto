@@ -1,9 +1,12 @@
 <?php
 
+/*Llamamos a la clase CakeEmail y Network/Email para habilitar su uso*/
+App::uses('CakeEmail', 'Network/Email');
+
 class PublicosController extends AppController {
 
     var $name = 'Publicos';
-    var $components = array('Email');
+
 
     function index() {
         $this->set('index');
@@ -47,7 +50,7 @@ class PublicosController extends AppController {
     }
 
     function contacto() {
-        $this->captcha = false; // ATENCION: Poner en 'false' para que funcione el captcha correctamentere
+        $this->captcha = true; // ATENCION: Poner en 'false' para que funcione el captcha correctamentere
         if (isset($this->request->data['Publicos']['ver_code'])) {
             if ($this->Session->read('ver_code') == $this->request->data['Publicos']['ver_code']) {
                 $this->captcha = true;
@@ -56,34 +59,20 @@ class PublicosController extends AppController {
 
         if (!empty($this->request->data) && $this->captcha) {
 
-            $this->Email->delivery = 'smtp';
-            $this->Email->smtpOptions = array(
-                'port' => '465',
-                'timeout' => '30',
-                'host' => 'ssl://smtp.gmail.com',
-                'username' => 'el.viejo.martin.webmaster@gmail.com',
-                'password' => 'fedora1234',
-                'auth' => true,
-            );
+            /*Creamos una clase de la componente que creamos en app(Config/mail.php) */
+            $Email = new CakeEmail('gmail');
 
-            //$this->Email->from = 'el.viejo.martin.webmaster@gmail.com';  				 
-            $this->Email->to = 'el.viejo.martin.webmaster@gmail.com';
+            
+            $Email->subject('Config Sistemas - Contacto');
+            
+            $Email->from ('el.viejo.martin.webmaster@gmail.com');
+            $Email->to('el.viejo.martin.webmaster@gmail.com');
+            $Email->replyTo($this->data['Publicos']['email']);
 
-            //$this->Email->to = 'contacto@cytd.tuars.com'; 
+               
+            /* Aca como parametro va el cuerpo del mensaje*/
+            if ($Email->send($this->data['Publicos']['message'])) {
 
-            $this->Email->replyTo = $this->request->data['Publicos']['name'] . ' <' . $this->request->data['Publicos']['email'] . '>';
-            //$this->Email->bcc = array('el.viejo.martin@gmail.com');      
-            $this->Email->subject = 'Config Sistemas - Contacto';
-            $this->Email->sendAs = 'both';
-
-            $cuerpo_correo = $this->request->data['Publicos']['message'];
-            $asunto_correo = $this->request->data['Publicos']['subject'];
-
-            $this->Session->write('cuerpo_correo', $cuerpo_correo);
-            $this->Session->write('asunto_correo', $asunto_correo);
-            $this->Email->template = 'correo';
-
-            if ($this->Email->send()) {
                 $this->Session->setFlash('Mensaje enviado. Gracias por contactarnos', 'flash_success');
                 $this->redirect(array('controller' => 'publicos', 'action' => 'contacto'));
             } else {
@@ -92,10 +81,7 @@ class PublicosController extends AppController {
                 $this->redirect(array('controller' => 'publicos', 'action' => 'contacto'));
             }
 
-            if ($this->Session->check('cuerpo_correo') || $this->Session->check('asunto_correo')) {
-                $this->Session->delete('cuerpo_correo');
-                $this->Session->delete('asunto_correo');
-            }
+         
         } elseif (!empty($this->request->data) && !$this->captcha) {
             $this->request->data['Publicos']['ver_code'] = '';
             $this->Session->setFlash('C&oacute;digo de seguridad incorrecto', 'flash_failure');
@@ -105,6 +91,10 @@ class PublicosController extends AppController {
         $this->render();
         $this->set('contacto');
     }
+
+
+    /* No esta arreglado todavia la funcion enviar_pass()  aun!!*/
+
 
     function enviar_pass() {
         $this->captcha = false; // ATENCION: Poner en 'false' para que funcione el captcha correctamente
