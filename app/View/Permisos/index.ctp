@@ -44,11 +44,11 @@ echo $this->addScript($this->Html->css('alertify.default'));
 				<fieldset><legend><h3>Permisos Agregados</h3></legend>
 		<?php
 		if (!empty($permisos)) {
-		echo $form->create('Permiso', array('action' => 'delete', 'id' => 'form_permiso', 'onsubmit'=>'return verificar_checkbox_vacio();'));
+		echo $this->Form->create('Permiso', array('action' => 'delete', 'id' => 'form_permiso', 'onsubmit'=>'return verificar_checkbox_vacio();'));
 		echo '<table width="100%" id="paginador1">';
 		echo '  <thead>';
 		$cells = array(
-			$form->checkbox('check-all',array('id' => 'check-all', 'class' => 'check-all')),
+			$this->Form->checkbox('check-all',array('id' => 'check-all', 'class' => 'check-all')),
 			'Pantalla',
 			'Fecha'
 		);
@@ -57,7 +57,7 @@ echo $this->addScript($this->Html->css('alertify.default'));
 		echo '  <tbody>';
 		foreach($permisos as $i) {
 			$cells = array(
-				$form->checkbox('Permiso.delete.' . $i['Permiso']['id'], array('class' => 'check-item')),
+				$this->Form->checkbox('Permiso.delete.' . $i['Permiso']['id'], array('class' => 'check-item')),
 				$i['Pantalla']['name'],
 				date('d-m-Y',strtotime($i['Permiso']['created'])),
 			);
@@ -68,7 +68,7 @@ echo $this->addScript($this->Html->css('alertify.default'));
 		?>
 		<span>
 		<?php
-		echo $form->end('Eliminar seleccionado\s');
+		echo $this->Form->end('Eliminar seleccionado\s');
 		?>
 		</span>
 		<?php

@@ -72,11 +72,11 @@ echo $this->addScript($this->Html->css('alertify.default'));
 				<fieldset><legend><h3>Agregar Permisos</h3></legend>
 		<?php
 		if (!empty($pantallas_disp)) {
-		echo $form->create('Permiso', array('action' => 'agregar_varios', 'id' => 'form_permiso', 'onsubmit'=>'return verificar_checkbox_vacio();'));
+		echo $this->Form->create('Permiso', array('action' => 'agregar_varios', 'id' => 'form_permiso', 'onsubmit'=>'return verificar_checkbox_vacio();'));
 		echo '<table width="100%" id="paginador1">';
 		echo '  <thead>';
 		$cells = array(
-			$form->checkbox('check-all',array('id' => 'check-all', 'class' => 'check-all')),
+			$this->Form->checkbox('check-all',array('id' => 'check-all', 'class' => 'check-all')),
 			'Pantalla'
 		);
 		echo $this->Html->tableHeaders($cells);
@@ -85,7 +85,7 @@ echo $this->addScript($this->Html->css('alertify.default'));
 		foreach($pantallas_disp as $pantalla_disp) {
 		      foreach($pantalla_disp as $pantalla) {
     			$cells = array(
-    				$form->checkbox('Permiso.add.' . $pantalla['id'], array('class' => 'check-item')),
+    				$this->Form->checkbox('Permiso.add.' . $pantalla['id'], array('class' => 'check-item')),
     				$pantalla['name'],
     			);
     			echo $this->Html->tableCells($cells);
@@ -96,7 +96,7 @@ echo $this->addScript($this->Html->css('alertify.default'));
 		?>
 		<span>
 		<?php
-		echo $form->end('Agregar seleccionado\s');
+		echo $this->Form->end('Agregar seleccionado\s');
 		?>
 		</span>
 		<?php

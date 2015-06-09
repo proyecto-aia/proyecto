@@ -1,6 +1,6 @@
 <div id='cssmenu'>
     <ul>
-        <li><?php echo $this->Html->link('Inicio', array('controller' => 'users', 'action' =>'home')); ?></li>
+        <li><?php echo $this->Html->link('Inicio', array('controller' => 'users', 'action' =>'redireccion')); ?></li>
         <li class='has-sub'><a href='#'><span>Usuarios ></span></a>
             <ul>
                 <li><?php echo $this->Html->link('Buscar', array('controller' => 'users', 'action' =>'search', 0)); ?></li>			

@@ -1,5 +1,12 @@
 <?php
 
+/* Para el caso de querer usar el tipo de encriptacion BlowFIsh
+  Este "'Controller/Component/Auth'" es necesario internamente para Cake, sino, no sabe donde buscar esta funcion "Hasher". */
+App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
+
+/* Para el caso de querer usar el hasheo SHA, dejo la llamada aca  */
+//App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
+
 class User extends AppModel {
 
     var $name = 'User';

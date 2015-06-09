@@ -23,23 +23,23 @@ echo $this->addScript($this->Html->script('jquery.corner'));
 			<div style='width:40%;'>
 				<fieldset style='padding:3%;'><legend><h3>Agregar nuevo Usuario</h3></legend>
 	<?php
-	echo $form->create('User', array('id' => 'agregar'));
-	echo $form->input('username', array('label' => 'Usuario*', 'class' => 'required alphanumeric', 'minlength' => '4', 'id' => 'username'));
-	echo $form->input('clear_password', array('type' => 'password', 'label' => 'Contrase&ntilde;a', 'class' => 'required', 'minLength' => '6', 'id' => 'clear_password'));
-	echo $form->input('confirm_password', array('type' => 'password', 'label' => 'Confirmar Contrase&ntilde;a', 'class' => 'required', 'minLength' => '6', 'id' => 'confirm_password'));
-	echo $form->input('first_name', array('label' => 'Nombres', 'id' => 'first_name'));
-	echo $form->input('last_name', array('label' => 'Apellidos', 'id' => 'last_name'));
-	echo $form->input('email', array('label' => 'E-Mail*', 'class' => 'required email', 'id' => 'email'));
-	echo $form->input('role_id', array('label' => 'Tipo de Usuario', 'type' => 'select', 'options' => $roles, 'id' => 'role_id'));
-	echo $form->input('status', array('options' => array('Activo' => 'Activo', 'Inactivo' => 'Inactivo'), 'label' => 'Estado', 'selected' => 'Activo', 'id' => 'status'));
+	echo $this->Form->create('User', array('id' => 'agregar'));
+	echo $this->Form->input('username', array('label' => 'Usuario*', 'class' => 'required alphanumeric', 'minlength' => '4', 'id' => 'username'));
+	echo $this->Form->input('clear_password', array('type' => 'password', 'label' => 'Contrase&ntilde;a', 'class' => 'required', 'minLength' => '6', 'id' => 'clear_password'));
+	echo $this->Form->input('confirm_password', array('type' => 'password', 'label' => 'Confirmar Contrase&ntilde;a', 'class' => 'required', 'minLength' => '6', 'id' => 'confirm_password'));
+	echo $this->Form->input('first_name', array('label' => 'Nombres', 'id' => 'first_name'));
+	echo $this->Form->input('last_name', array('label' => 'Apellidos', 'id' => 'last_name'));
+	echo $this->Form->input('email', array('label' => 'E-Mail*', 'class' => 'required email', 'id' => 'email'));
+	echo $this->Form->input('role_id', array('label' => 'Tipo de Usuario', 'type' => 'select', 'options' => $roles, 'id' => 'role_id'));
+	echo $this->Form->input('status', array('options' => array('Activo' => 'Activo', 'Inactivo' => 'Inactivo'), 'label' => 'Estado', 'selected' => 'Activo', 'id' => 'status'));
 	?>
 	<span style='float:right'>
 	<?php
-	echo $form->submit('Agregar', array('after' => ' ' . $html->link('Cancelar', array('action' => 'index'))));
+	echo $this->Form->submit('Agregar', array('after' => ' ' . $this->Html->link('Cancelar', array('action' => 'index'))));
 	?>
 	</span>
 	<?php	
-	echo $form->end();
+	echo $this->Form->end();
 	?>
 				</fieldset>
 			</div>
@@ -51,7 +51,7 @@ echo $this->addScript($this->Html->script('jquery.corner'));
 
 <script type='text/javascript' language='javascript'>
 $(document).ready(function(){
-   //código a ejecutar cuando el DOM está listo para recibir instrucciones.
+   //codigo a ejecutar cuando el DOM esta listo para recibir instrucciones.
 	$('#agregar').validate();
 });
 

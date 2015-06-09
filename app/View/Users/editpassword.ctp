@@ -22,31 +22,31 @@ echo $this->addScript($this->Html->script('jquery.corner'));
 		<td>
 		    <fieldset style='padding:3%;'><legend><h3>Modificar Contrase&ntilde;a</h3></legend>
 		<?php
-		echo $form->create('User', array('id' => 'modificar'));
-		echo $form->hidden('id');
-		echo $form->hidden('username');
+		echo $this->Form->create('User', array('id' => 'modificar'));
+		echo $this->Form->hidden('id');
+		echo $this->Form->hidden('username');
 		?>
 		<b>
 		<?php
-		echo $form->input('old_password', array('type' => 'password', 'label' => 'Contrase&ntilde;a Actual*', 'class' => 'required', 'minLength' => '6', 'id' => 'old_password'));
+		echo $this->Form->input('old_password', array('type' => 'password', 'label' => 'Contrase&ntilde;a Actual*', 'class' => 'required', 'minLength' => '6', 'id' => 'old_password'));
 		?>
 		</b>
 		<?php
-		echo $form->input('clear_password', array('type' => 'password', 'label' => 'Nueva Contrase&ntilde;a', 'class' => 'required', 'minLength' => '6', 'id' => 'clear_password'));
-		echo $form->input('confirm_password', array('type' => 'password', 'label' => 'Confirmar Nueva Contrase&ntilde;a', 'class' => 'required', 'minLength' => '6', 'id' => 'confirm_password'));
-		echo $form->hidden('first_name');
-		echo $form->hidden('last_name');
-		echo $form->hidden('email');
-		echo $form->hidden('status', array('options' => array('Activo' => 'Activo', 'Inactivo' => 'Inactivo')));
-		echo $form->hidden('role_id', array('label' => 'Tipo de Usuario', 'type' => 'select', 'options' => $roles));
+		echo $this->Form->input('clear_password', array('type' => 'password', 'label' => 'Nueva Contrase&ntilde;a', 'class' => 'required', 'minLength' => '6', 'id' => 'clear_password'));
+		echo $this->Form->input('confirm_password', array('type' => 'password', 'label' => 'Confirmar Nueva Contrase&ntilde;a', 'class' => 'required', 'minLength' => '6', 'id' => 'confirm_password'));
+		echo $this->Form->hidden('first_name');
+		echo $this->Form->hidden('last_name');
+		echo $this->Form->hidden('email');
+		echo $this->Form->hidden('status', array('options' => array('Activo' => 'Activo', 'Inactivo' => 'Inactivo')));
+		echo $this->Form->hidden('role_id', array('label' => 'Tipo de Usuario', 'type' => 'select', 'options' => $roles));
 		?>
 		<span style='float:right'>
 		<?php		
-		echo $form->submit('Modificar', array('after' => ' ' . $html->link('Cancelar', array('action' => 'index'))));
+		echo $this->Form->submit('Modificar', array('after' => ' ' . $this->Html->link('Cancelar', array('action' => 'index'))));
 		?>
 		</span>
 		<?php		
-		echo $form->end();
+		echo $this->Form->end();
 		?>		
 		      </fieldset>
 		</td>	
@@ -90,7 +90,7 @@ echo $this->addScript($this->Html->script('jquery.corner'));
 
 <script type='text/javascript' language='javascript'>
 $(document).ready(function(){
-   //código a ejecutar cuando el DOM está listo para recibir instrucciones.
+   //codigo a ejecutar cuando el DOM esta listo para recibir instrucciones.
 	$('#modificar').validate();
 });
 </script>

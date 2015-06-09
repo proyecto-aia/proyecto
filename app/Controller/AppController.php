@@ -78,5 +78,8 @@ class AppController extends Controller {
       }
       return $bandera_permiso;
       }
-     */
+     */    
+    
+    
+    
 }

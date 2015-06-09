@@ -41,23 +41,23 @@ echo $this->addScript($this->Html->css('button'));
 			<div>
 				<fieldset><legend><h3> Buscar Usuario/s </h3></legend>
             		<?php
-            			echo $form->create(null,array('action'=>'search', 'id' => 'search'));
+            			echo $this->Form->create(null,array('action'=>'search', 'id' => 'search'));
             		?>
             		<table class='tabla_normal'>
             			<tr>
             				<td>
             		<?php
-            			echo $form->input('username', array('label' => 'Usuario', 'class' => 'alphanumeric', 'id' => 'username'));
+            			echo $this->Form->input('username', array('label' => 'Usuario', 'class' => 'alphanumeric', 'id' => 'username'));
             		?>
             				</td>
             				<td>
             		<?php			
-            			echo $form->input('first_name', array('label' => 'Nombres', 'id' => 'first_name'));
+            			echo $this->Form->input('first_name', array('label' => 'Nombres', 'id' => 'first_name'));
             		?>
             				</td>
             				<td>
             		<?php			
-            			echo $form->input('last_name', array('label' => 'Apellidos', 'id' => 'last_name'));
+            			echo $this->Form->input('last_name', array('label' => 'Apellidos', 'id' => 'last_name'));
             		?>
             				</td>
             				<td>
@@ -65,28 +65,28 @@ echo $this->addScript($this->Html->css('button'));
             			<tr>
             				<td>
             		<?php			
-            			echo $form->input('email', array('label' => 'E-Mail', 'class' => 'email', 'id' => 'email'));
+            			echo $this->Form->input('email', array('label' => 'E-Mail', 'class' => 'email', 'id' => 'email'));
             		?>
             				</td>
             				<td>
             		<?php			
-            			echo $form->input('role_id', array('label' => 'Tipo de Usuario', 'type' => 'select', 'empty' => __(' ',true), 'options' => $roles, 'id' => 'role_id'));
+            			echo $this->Form->input('role_id', array('label' => 'Tipo de Usuario', 'type' => 'select', 'empty' => __(' ',true), 'options' => $roles, 'id' => 'role_id'));
             		?>
             				</td>
             				<td>		
             		<?php			
-            			echo $form->input('status', array('empty' => __(' ',true), 'options' => array('Activo' => 'Activo', 'Inactivo' => 'Inactivo'), 'label' => 'Estado', 'id' => 'status'));
+            			echo $this->Form->input('status', array('empty' => __(' ',true), 'options' => array('Activo' => 'Activo', 'Inactivo' => 'Inactivo'), 'label' => 'Estado', 'id' => 'status'));
             		?>
             				</td>
             			</tr>		
             		</table>
         			<span style='float:right'>
             		<?php
-            			echo $form->submit('Buscar');
+            			echo $this->Form->submit('Buscar');
             		?>
             			</span>
             		<?php	
-            			echo $form->end();
+            			echo $this->Form->end();
             		?>
 				</fieldset>
             </div>
@@ -98,11 +98,11 @@ echo $this->addScript($this->Html->css('button'));
     		<div>
     				<fieldset><legend><h3>Resultado/s de la busqueda</h3></legend>
             	<?php
-                    echo $form->create('User', array('action' => 'delete', 'id' => 'form_user', 'onsubmit'=>'return verificar_checkbox_vacio();'));
+                    echo $this->Form->create('User', array('action' => 'delete', 'id' => 'form_user', 'onsubmit'=>'return verificar_checkbox_vacio();'));
             		echo '<table width="100%" id="paginador1">';
             		echo '  <thead>';
             		$cells = array(
-            			$form->checkbox('check-all',array('id' => 'check-all', 'class' => 'check-all')),
+            			$this->Form->checkbox('check-all',array('id' => 'check-all', 'class' => 'check-all')),
             			null,
             			null,
             			'Usuario',
@@ -116,14 +116,14 @@ echo $this->addScript($this->Html->css('button'));
             		echo '  <tbody>';
             		foreach($users_encontrados as $i) {
             			$cells = array(
-            				$form->checkbox('User.delete.' . $i['User']['id'], array('class' => 'check-item')),
-                            $html->link($this->Html->image('../img/icons/Magnifier.png'), array('action' => 'view', $i['User']['id']), array( 'class' => 'button1', 'title' => 'Ver')),
-                            $html->link($this->Html->image('../img/icons/Pencil.png'), array('action' => 'edit', $i['User']['id']), array( 'class' => 'button1', 'title' => 'Editar')),
+            				$this->Form->checkbox('User.delete.' . $i['User']['id'], array('class' => 'check-item')),
+                            $this->Html->image('../img/icons/Magnifier.png', array('url' => array('action' => 'view', $i['User']['id']), 'class' => 'button1', 'title' => 'Ver')),
+                            $this->Html->image('../img/icons/Pencil.png', array('url' => array('action' => 'edit', $i['User']['id']), 'class' => 'button1', 'title' => 'Editar')),
             				$i['User']['username'],
             				$i['User']['full_name'],
             				$i['Role']['nombre'],			
             				$i['User']['status'],
-                            $html->link($this->Html->image('../img/icons/Group-Key.png'), array('controller' => 'permisos', 'action' => 'index', $i['User']['id']), array( 'class' => 'button1', 'title' => 'Permisos')),				
+                            $this->Html->image('../img/icons/Group-Key.png', array('url' => array('controller' => 'permisos', 'action' => 'index', $i['User']['id']), 'class' => 'button1', 'title' => 'Permisos')),				
             			);
             			echo $this->Html->tableCells($cells);
             		}
@@ -134,7 +134,7 @@ echo $this->addScript($this->Html->css('button'));
             		<span>
             		<?php
             		if (!empty($users_encontrados)) { 
-            			echo $form->end('Eliminar seleccionado\s');
+            			echo $this->Form->end('Eliminar seleccionado\s');
             		}
             		?>
             		</span>    
@@ -151,7 +151,7 @@ echo $this->addScript($this->Html->css('button'));
 
 <script type='text/javascript' language='javascript'>
     $(document).ready(function(){
-       //código a ejecutar cuando el DOM está listo para recibir instrucciones.
+       //codigo a ejecutar cuando el DOM esta listo para recibir instrucciones.
     	$('#search').validate();   
     });
     

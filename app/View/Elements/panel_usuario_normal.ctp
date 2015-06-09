@@ -5,7 +5,7 @@
         </a>
     	<ul style="width: 150px;">
             <li><?php echo $this->Html->link('Cuenta', array('controller' => 'users', 'action' =>'editpassword', $usuario_id)); ?></li>			
-            <li><?php echo $this->Html->link('Cerrar Sesi&oacute;n', array('controller' => 'users', 'action' =>'logout')); ?></li>
+            <li><?php echo $this->Html->link('Cerrar Sesión', array('controller' => 'users', 'action' =>'logout')); ?></li>
     	</ul>
     </li>
     <li>

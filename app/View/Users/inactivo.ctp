@@ -32,6 +32,6 @@ echo $this->addScript($this->Html->css('estilo_tablas'));
 
 <script type='text/javascript' language='javascript'>
 $(document).ready(function(){
-   //código a ejecutar cuando el DOM está listo para recibir instrucciones.
+   //codigo a ejecutar cuando el DOM esta listo para recibir instrucciones.
 });
 </script>

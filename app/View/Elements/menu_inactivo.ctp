@@ -1,6 +1,6 @@
 <div id='cssmenu'>
     <ul>
-        <li><?php echo $this->Html->link('Inicio', array('controller' => 'users', 'action' =>'home')); ?></li>
+        <li><?php echo $this->Html->link('Inicio', array('controller' => 'users', 'action' =>'redireccion')); ?></li>
     </ul>    
     <!-- Panel Usuario Limitado -->
     <?php echo $this->element('panel_usuario_limitado'); ?>

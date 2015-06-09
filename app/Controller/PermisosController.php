@@ -5,6 +5,7 @@ class PermisosController extends AppController {
     var $name = 'Permisos';
     var $components = array('Auth');
 
+    /*
     function afterFilter() {
         // Update User last_access datetime
         if ($this->Auth->user()) {
@@ -13,12 +14,14 @@ class PermisosController extends AppController {
             $this->User->saveField('last_access', date('Y-m-d H:i:s'));
         }
     }
+     * 
+     */
 
     function index($user_id = null) {
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         switch ($this->Auth->user('role_id')) {
             case 1:
-                //$this->_refreshAuth();			
+                ////$this->_refreshAuth();			
                 if (($this->Auth->user('role_id') == 1) && ($this->Auth->user('status') == 'Activo')) {
                     if ($user_id) {
                         $pantalla = 32;
@@ -58,7 +61,7 @@ class PermisosController extends AppController {
                             $this->set('permisos', $result2);
                         } else {
                             $this->Session->setFlash('No tiene permisos para acceder a esta Pantalla<br>Comun&iacute;quese con el Administrador', 'flash_failure');
-                            $this->redirect(array('controller' => 'users', 'action' => 'index'));
+                            $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
                         }
                     } else {
                         if ($this->Session->check('user_id')) {
@@ -92,11 +95,11 @@ class PermisosController extends AppController {
                                 $this->set('permisos', $result2);
                             } else {
                                 $this->Session->setFlash('No tiene permisos para acceder a esta Pantalla<br>Comun&iacute;quese con el Administrador', 'flash_failure');
-                                $this->redirect(array('controller' => 'users', 'action' => 'index'));
+                                $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
                             }
                         } else {
                             $this->Session->setFlash('Error con variables de sesi&oacute;n<br>Comun&iacute;quese con el Administrador', 'flash_failure');
-                            $this->redirect(array('controller' => 'users', 'action' => 'index'));
+                            $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
                         }
                     }
                 } else {
@@ -105,7 +108,7 @@ class PermisosController extends AppController {
                         $this->redirect(array('controller' => 'users', 'action' => 'inactivo'));
                     } else {
                         $this->Session->setFlash('Acceso denegado', 'flash_failure');
-                        $this->redirect(array('controller' => 'users', 'action' => 'index'));
+                        $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
                     }
                 }
                 break;
@@ -120,7 +123,7 @@ class PermisosController extends AppController {
 
     function add() {
         $pantalla = 33;
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         if (($this->Auth->user('role_id') == 1) && ($this->Auth->user('status') == 'Activo')) {
             $permiso = $this->permiso_pantalla($this->Auth->user('id'), $pantalla);
             if ($permiso) {
@@ -179,7 +182,7 @@ class PermisosController extends AppController {
                 $this->set('pantallas_disp', $result3);
             } else {
                 $this->Session->setFlash('No tiene permisos para acceder a esta Pantalla<br>Comun&iacute;quese con el Administrador', 'flash_failure');
-                $this->redirect(array('controller' => 'users', 'action' => 'index'));
+                $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
             }
         } else {
             $this->Session->setFlash('Acceso denegado', 'flash_failure');
@@ -189,7 +192,7 @@ class PermisosController extends AppController {
 
     function agregar_varios($id = null) {
         $pantalla = 33;
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         if (($this->Auth->user('role_id') == 1) && ($this->Auth->user('status') == 'Activo')) {
             $permiso = $this->permiso_pantalla($this->Auth->user('id'), $pantalla);
             if ($permiso) {
@@ -219,7 +222,7 @@ class PermisosController extends AppController {
                 $this->redirect('index');
             } else {
                 $this->Session->setFlash('No tiene permisos para acceder a esta Pantalla<br>Comun&iacute;quese con el Administrador', 'flash_failure');
-                $this->redirect(array('controller' => 'users', 'action' => 'index'));
+                $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
             }
         } else {
             $this->Session->setFlash('Acceso denegado', 'flash_failure');
@@ -229,7 +232,7 @@ class PermisosController extends AppController {
 
     function delete($id = null) {
         $pantalla = 34;
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         if (($this->Auth->user('role_id') == 1) && ($this->Auth->user('status') == 'Activo')) {
             $permiso = $this->permiso_pantalla($this->Auth->user('id'), $pantalla);
             if ($permiso) {
@@ -249,7 +252,7 @@ class PermisosController extends AppController {
                 $this->redirect('index');
             } else {
                 $this->Session->setFlash('No tiene permisos para acceder a esta Pantalla<br>Comun&iacute;quese con el Administrador', 'flash_failure');
-                $this->redirect(array('controller' => 'users', 'action' => 'index'));
+                $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
             }
         } else {
             $this->Session->setFlash('Acceso denegado', 'flash_failure');
@@ -263,6 +266,7 @@ class PermisosController extends AppController {
      * @param string $value
      * @return void 
      */
+    /*
     function _refreshAuth($field = '', $value = '') {
         if (!empty($field) && !empty($value)) {
             $this->Session->write($this->Auth->sessionKey . '.' . $field, $value);
@@ -274,6 +278,8 @@ class PermisosController extends AppController {
             }
         }
     }
+     * 
+     */
 
 }
 

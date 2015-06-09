@@ -7,11 +7,15 @@ class UsersController extends AppController {
     var $components = array(
         'Auth' => array(
             'autoRedirect' => false,
-            'loginRedirect' => array('controller' => 'users', 'action' => 'index'),
+            'loginRedirect' => array('controller' => 'users', 'action' => 'redireccion'),
             'logoutRedirect' => array('controller' => 'publicos', 'action' => 'index'),
+            'authenticate' => array('Form' => array('passwordHasher' => 'Blowfish'))
+            //'authError' => false,
+            //'authorize' => array('Controller')
         )
     );
-
+    
+    /*
     function afterFilter() {
         // Update User last_access datetime
         if ($this->Auth->user()) {
@@ -22,11 +26,17 @@ class UsersController extends AppController {
     }
 
     // Para entrar sin login y crear el primer usuario
-    /*
-      function beforeFilter() {
-      $this->Auth->allow('*');
-      }
-     */
+    public function beforeFilter() {        
+        $this->Auth->allow('*');
+        $this->set('current_user', $this->Auth->user());
+        $this->set('logged_in', $this->Auth->loggedIn());   
+    }
+
+    public function isAuthorized($user) {
+        return true;
+    } 
+     * 
+     */     
 
     /**
      * Set this to false if you don't want to store clear passwords in the database
@@ -35,11 +45,12 @@ class UsersController extends AppController {
      */
     var $_store_clear_password = false;
 
-    function index() {
-        $this->_refreshAuth();
+    //function index() {
+    function redireccion() {
+        //$this->_refreshAuth();
         switch ($this->Auth->user('role_id')) {
             case 1:
-                $this->redirect(array('controller' => 'users', 'action' => 'home'));
+                $this->redirect(array('controller' => 'users', 'action' => 'index'));
                 break;
             case 2:
                 $this->redirect(array('controller' => 'gestiones', 'action' => 'index'));
@@ -58,11 +69,13 @@ class UsersController extends AppController {
             }
         }
 
+        //if (!empty($this->request->data) && $this->Auth->login($this->request->data) && $this->captcha) {
         if (!empty($this->request->data) && $this->Auth->login() && $this->captcha) {
             $this->User->id = $this->Auth->user('id');
             $this->User->saveField('last_login', date('Y-m-d H:i:s'));
             $this->Session->setFlash('Logueado correctamente', 'flash_success');
-            $this->redirect(array('action' => 'index'));
+            //$this->redirect(array('action' => 'index'));
+            $this->redirect($this->Auth->redirect());
         } elseif (!empty($this->request->data) && $this->captcha) {
             $this->request->data['User']['password'] = '';
             $this->request->data['User']['ver_code'] = '';
@@ -103,12 +116,12 @@ class UsersController extends AppController {
         $this->redirect($this->Auth->logout());
     }
 
-    function home() {
-        $this->_refreshAuth();
+    function index() {
+        //$this->_refreshAuth();
         switch ($this->Auth->user('role_id')) {
             case 1:
                 if ($this->Auth->user('status') == 'Activo') {
-                    $this->set('home');
+                    $this->set('index');
                     $this->set('usuario', $this->Auth->user('username')); // Usuario Logeado
                     $this->set('usuario_id', $this->Auth->user('id')); // Usuario Logeado	
                     if ($this->Session->check('user_id') || $this->Session->check('user_name') || $this->Session->check('user_role')) {
@@ -131,18 +144,18 @@ class UsersController extends AppController {
     }
 
     function inactivo() {
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         if ($this->Auth->user('status') == 'Inactivo') {
             $this->set('usuario', $this->Auth->user('username')); // Usuario Logeado	
         } else {
             $this->Session->setFlash('Acceso denegado', 'flash_failure');
-            $this->redirect('index');
+            $this->redirect('redireccion');
         }
     }
 
     function search($buscar = 1) {
         $pantalla = 1;
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         if (($this->Auth->user('role_id') == 1) && ($this->Auth->user('status') == 'Activo')) {
             $permiso = $this->permiso_pantalla($this->Auth->user('id'), $pantalla);
             if ($permiso) {
@@ -234,13 +247,13 @@ class UsersController extends AppController {
             }
         } else {
             $this->Session->setFlash('Acceso denegado', 'flash_failure');
-            $this->redirect('index');
+            $this->redirect('redireccion');
         }
     }
 
     function view($id = null) {
         $pantalla = 2;
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         if (($this->Auth->user('role_id') == 1) && ($this->Auth->user('status') == 'Activo')) {
             $permiso = $this->permiso_pantalla($this->Auth->user('id'), $pantalla);
             if ($permiso) {
@@ -255,7 +268,7 @@ class UsersController extends AppController {
             }
         } else {
             $this->Session->setFlash('Acceso denegado', 'flash_failure');
-            $this->redirect('index');
+            $this->redirect('redireccion');
         }
     }
 
@@ -273,7 +286,7 @@ class UsersController extends AppController {
                     $this->User->set($this->request->data);
                     if ($this->User->validates()) {
                         $this->request->data['User']['password'] = $this->request->data['User']['clear_password'];
-                        $this->request->data = $this->Auth->hashPasswords($this->request->data);
+                        //$this->request->data = $this->Auth->hashPasswords($this->request->data);
                         if (!$this->_store_clear_password) {
                             unset($this->request->data['User']['clear_password']);
                         }
@@ -291,13 +304,13 @@ class UsersController extends AppController {
             }
         } else {
             $this->Session->setFlash('Acceso denegado', 'flash_failure');
-            $this->redirect('index');
+            $this->redirect('redireccion');
         }
     }
 
     function edit($id = null) {
         $pantalla = 4;
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         if (($this->Auth->user('role_id') == 1) && ($this->Auth->user('status') == 'Activo')) {
             $permiso = $this->permiso_pantalla($this->Auth->user('id'), $pantalla);
             if ($permiso) {
@@ -307,7 +320,7 @@ class UsersController extends AppController {
                 $this->set(compact('roles'));
                 if (!empty($this->request->data)) {
                     $fields = array_keys($this->request->data['User']);
-                    if (!empty($this->request->data['User']['clear_password']) || !empty($this->request->data['User']['confirm_password'])) {
+                    if (!empty($this->request->data['User']['clear_password']) || !empty($this->request->data['User']['confirm_password'])) {                    
                         $fields[] = 'password';
                     } else {
                         $fields = array_diff($fields, array('clear_password', 'confirm_password'));
@@ -317,7 +330,7 @@ class UsersController extends AppController {
                         if (!empty($this->request->data['User']['clear_password'])) {
                             $this->request->data['User']['password'] = $this->request->data['User']['clear_password'];
                         }
-                        $this->request->data = $this->Auth->hashPasswords($this->request->data);
+                        //$this->request->data = $this->Auth->hashPasswords($this->request->data);
                         if (!$this->_store_clear_password) {
                             unset($this->request->data['User']['clear_password']);
                         }
@@ -327,7 +340,7 @@ class UsersController extends AppController {
                         // De esta manera solo edita lo que no esta en el form
                         $this->User->saveField('user_modified', $this->Auth->user('id'));
 
-                        $this->_refreshAuth(); // Actualiza en componente Auth
+                        //$this->_refreshAuth(); // Actualiza en componente Auth
                         $this->Session->setFlash('Usuario actualizado correctamente', 'flash_success');
                         $this->redirect('search');
                     }
@@ -347,13 +360,13 @@ class UsersController extends AppController {
             }
         } else {
             $this->Session->setFlash('Acceso denegado', 'flash_failure');
-            $this->redirect('index');
+            $this->redirect('redireccion');
         }
     }
 
     function delete() {
         $pantalla = 5;
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         if (($this->Auth->user('role_id') == 1) && ($this->Auth->user('status') == 'Activo')) {
             $permiso = $this->permiso_pantalla($this->Auth->user('id'), $pantalla);
             if ($permiso) {
@@ -398,13 +411,13 @@ class UsersController extends AppController {
             }
         } else {
             $this->Session->setFlash('Acceso denegado', 'flash_failure');
-            $this->redirect('index');
+            $this->redirect('redireccion');
         }
     }
 
     function editpassword($id = null) {
         $pantalla = 6;
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         if ($this->Auth->user('status') == 'Activo') {
             //$permiso = $this->permiso_pantalla($this->Auth->user('id'),$pantalla);
             //No se evalua el permiso ya que el usuario siempre va a poder acceder a esta pantalla
@@ -427,14 +440,15 @@ class UsersController extends AppController {
                         if (!empty($this->request->data['User']['clear_password'])) {
                             $this->request->data['User']['password'] = $this->request->data['User']['clear_password'];
                         }
-                        $this->request->data = $this->Auth->hashPasswords($this->request->data);
+                        //$this->request->data = $this->Auth->hashPasswords($this->request->data);
                         if (!$this->_store_clear_password) {
                             unset($this->request->data['User']['clear_password']);
                         }
+                        
                         $this->User->save($this->request->data, false, $fields);
                         $this->Session->setFlash('Contrase&ntilde;a actualizada correctamente', 'flash_success');
-                        $this->_refreshAuth(); // Actualiza en componente Auth para que refresque la clave
-                        $this->redirect('index');
+                        //$this->_refreshAuth(); // Actualiza en componente Auth para que refresque la clave
+                        $this->redirect('redireccion');
                     } else {
                         $this->Session->setFlash('Contrase&ntilde;a actual incorrecta. Si olvid&oacute; su contrase&ntilde;a comun&iacute;quese con el Administrador', 'flash_failure');
                     }
@@ -453,7 +467,7 @@ class UsersController extends AppController {
             }
         } else {
             $this->Session->setFlash('Acceso denegado', 'flash_failure');
-            $this->redirect('index');
+            $this->redirect('redireccion');
         }
     }
 
@@ -463,6 +477,7 @@ class UsersController extends AppController {
      * @param string $value
      * @return void 
      */
+    /*
     function _refreshAuth($field = '', $value = '') {
         if (!empty($field) && !empty($value)) {
             $this->Session->write($this->Auth->sessionKey . '.' . $field, $value);
@@ -474,6 +489,7 @@ class UsersController extends AppController {
             }
         }
     }
+    */
 
 }
 

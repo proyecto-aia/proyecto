@@ -4,7 +4,7 @@
             <span><?php echo $usuario; ?>&nbsp;></span>
         </a>
         <ul style="width: 150px;">			
-                <li><?php echo $this->Html->link('Cerrar Sesi&oacute;n', array('controller' => 'users', 'action' =>'logout')); ?></li>
+                <li><?php echo $this->Html->link('Cerrar Sesión', array('controller' => 'users', 'action' =>'logout')); ?></li>
         </ul>
     </li>
     <li>
