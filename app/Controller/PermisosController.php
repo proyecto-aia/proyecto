@@ -5,7 +5,6 @@ class PermisosController extends AppController {
     var $name = 'Permisos';
     var $components = array('Auth');
 
-    /*
     function afterFilter() {
         // Update User last_access datetime
         if ($this->Auth->user()) {
@@ -14,8 +13,6 @@ class PermisosController extends AppController {
             $this->User->saveField('last_access', date('Y-m-d H:i:s'));
         }
     }
-     * 
-     */
 
     function index($user_id = null) {
         //$this->_refreshAuth();

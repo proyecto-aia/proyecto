@@ -13,9 +13,8 @@ class UsersController extends AppController {
             //'authError' => false,
             //'authorize' => array('Controller')
         )
-    );
-    
-    /*
+    );    
+
     function afterFilter() {
         // Update User last_access datetime
         if ($this->Auth->user()) {
@@ -24,7 +23,8 @@ class UsersController extends AppController {
             $this->User->saveField('last_access', date('Y-m-d H:i:s'));
         }
     }
-
+    
+    /*
     // Para entrar sin login y crear el primer usuario
     public function beforeFilter() {        
         $this->Auth->allow('*');
