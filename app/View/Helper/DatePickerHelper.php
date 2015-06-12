@@ -1,7 +1,8 @@
 <?php  
 App::import('Helper', 'Form'); 
+//App::uses('Helper', 'Form');
 
-class DatePickerHelper extends FormHelper { 
+class DatePickerHelper extends FormHelper {
     
     var $helpers = array('Html','Javascript');  
     var $format = '%Y-%m-%d'; 

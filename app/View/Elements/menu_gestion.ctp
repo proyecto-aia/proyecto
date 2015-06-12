@@ -5,7 +5,6 @@
             <ul>
                 <li><?php echo $this->Html->link('Buscar', array('controller' => 'noticias', 'action' =>'search', 0)); ?></li>			
                 <li><?php echo $this->Html->link('Agregar', array('controller' => 'noticias', 'action' =>'add')); ?></li>
-                <li><?php echo $this->Html->link('Administrar Categorias', array('controller' => 'categorias', 'action' =>'index', 'Noticia', 2)); ?></li>
             </ul>
         </li>
         <li class='has-sub'><a href='#'><span>Videos ></span></a>
@@ -19,14 +18,12 @@
             <ul>
                 <li><?php echo $this->Html->link('Buscar', array('controller' => 'productos', 'action' =>'search', 0)); ?></li>			
                 <li><?php echo $this->Html->link('Agregar', array('controller' => 'productos', 'action' =>'add')); ?></li>
-                <li><?php echo $this->Html->link('Administrar Categorias', array('controller' => 'categorias', 'action' =>'index', 'Producto', 3)); ?></li>
             </ul>
         </li>
         <li class='has-sub'><a href='#'><span>Albums ></span></a>
             <ul>
                 <li><?php echo $this->Html->link('Buscar', array('controller' => 'albums', 'action' =>'search', 0)); ?></li>			
                 <li><?php echo $this->Html->link('Agregar', array('controller' => 'albums', 'action' =>'add')); ?></li>
-                <li><?php echo $this->Html->link('Administrar Categorias', array('controller' => 'categorias', 'action' =>'index', 'Album', 1)); ?></li>
             </ul>
         </li>
     </ul>    

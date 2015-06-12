@@ -15,11 +15,11 @@ class ProductosController extends AppController {
     }
 
     function index() {
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         switch ($this->Auth->user('role_id')) {
             case 1:
                 $this->Session->setFlash('Acceso denegado', 'flash_failure');
-                $this->redirect(array('controller' => 'users', 'action' => 'home'));
+                $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
                 break;
             case 2:
                 $this->redirect(array('controller' => 'productos', 'action' => 'search', 0));
@@ -31,7 +31,7 @@ class ProductosController extends AppController {
 
     function search($buscar = 1) {
         $pantalla = 36;
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         if (($this->Auth->user('role_id') == 2) && ($this->Auth->user('status') == 'Activo')) {
             $permiso = $this->permiso_pantalla($this->Auth->user('id'), $pantalla);
             if ($permiso) {
@@ -131,7 +131,7 @@ class ProductosController extends AppController {
                 $this->set('buscar', $buscar);
             } else {
                 $this->Session->setFlash('No tiene permisos para acceder a esta Pantalla<br>Comun&iacute;quese con el Administrador', 'flash_failure');
-                $this->redirect(array('controller' => 'users', 'action' => 'index'));
+                $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
             }
         } else {
             $this->Session->setFlash('Acceso denegado', 'flash_failure');
@@ -141,7 +141,7 @@ class ProductosController extends AppController {
 
     function view($id = null) {
         $pantalla = 37;
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         if (($this->Auth->user('role_id') == 2) && ($this->Auth->user('status') == 'Activo')) {
             $permiso = $this->permiso_pantalla($this->Auth->user('id'), $pantalla);
             if ($permiso) {
@@ -152,7 +152,7 @@ class ProductosController extends AppController {
                 $this->set('producto', $this->Producto->read(null, $id));
             } else {
                 $this->Session->setFlash('No tiene permisos para acceder a esta Pantalla<br>Comun&iacute;quese con el Administrador', 'flash_failure');
-                $this->redirect(array('controller' => 'users', 'action' => 'index'));
+                $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
             }
         } else {
             $this->Session->setFlash('Acceso denegado', 'flash_failure');
@@ -162,7 +162,7 @@ class ProductosController extends AppController {
 
     function add() {
         $pantalla = 38;
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         if (($this->Auth->user('role_id') == 2) && ($this->Auth->user('status') == 'Activo')) {
             $permiso = $this->permiso_pantalla($this->Auth->user('id'), $pantalla);
             if ($permiso) {
@@ -187,7 +187,7 @@ class ProductosController extends AppController {
                 }
             } else {
                 $this->Session->setFlash('No tiene permisos para acceder a esta Pantalla<br>Comun&iacute;quese con el Administrador', 'flash_failure');
-                $this->redirect(array('controller' => 'users', 'action' => 'index'));
+                $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
             }
         } else {
             $this->Session->setFlash('Acceso denegado', 'flash_failure');
@@ -197,7 +197,7 @@ class ProductosController extends AppController {
 
     function edit($id = null) {
         $pantalla = 39;
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         if (($this->Auth->user('role_id') == 2) && ($this->Auth->user('status') == 'Activo')) {
             $permiso = $this->permiso_pantalla($this->Auth->user('id'), $pantalla);
             if ($permiso) {
@@ -231,7 +231,7 @@ class ProductosController extends AppController {
                 }
             } else {
                 $this->Session->setFlash('No tiene permisos para acceder a esta Pantalla<br>Comun&iacute;quese con el Administrador', 'flash_failure');
-                $this->redirect(array('controller' => 'users', 'action' => 'index'));
+                $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
             }
         } else {
             $this->Session->setFlash('Acceso denegado', 'flash_failure');
@@ -241,7 +241,7 @@ class ProductosController extends AppController {
 
     function delete() {
         $pantalla = 40;
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         if (($this->Auth->user('role_id') == 2) && ($this->Auth->user('status') == 'Activo')) {
             $permiso = $this->permiso_pantalla($this->Auth->user('id'), $pantalla);
             if ($permiso) {
@@ -268,7 +268,7 @@ class ProductosController extends AppController {
                 $this->redirect('index');
             } else {
                 $this->Session->setFlash('No tiene permisos para acceder a esta Pantalla<br>Comun&iacute;quese con el Administrador', 'flash_failure');
-                $this->redirect(array('controller' => 'users', 'action' => 'index'));
+                $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
             }
         } else {
             $this->Session->setFlash('Acceso denegado', 'flash_failure');
@@ -278,7 +278,7 @@ class ProductosController extends AppController {
 
     function pre_send($id = null) {
         $pantalla = 41;
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         if (($this->Auth->user('role_id') == 2) && ($this->Auth->user('status') == 'Activo')) {
             $permiso = $this->permiso_pantalla($this->Auth->user('id'), $pantalla);
             if ($permiso) {
@@ -300,7 +300,7 @@ class ProductosController extends AppController {
                 }
             } else {
                 $this->Session->setFlash('No tiene permisos para acceder a esta Pantalla<br>Comun&iacute;quese con el Administrador', 'flash_failure');
-                $this->redirect(array('controller' => 'users', 'action' => 'index'));
+                $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
             }
         } else {
             $this->Session->setFlash('Acceso denegado', 'flash_failure');
@@ -310,7 +310,7 @@ class ProductosController extends AppController {
 
     function send() {
         $pantalla = 41;
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         if (($this->Auth->user('role_id') == 2) && ($this->Auth->user('status') == 'Activo')) {
             $permiso = $this->permiso_pantalla($this->Auth->user('id'), $pantalla);
             if ($permiso) {
@@ -439,7 +439,7 @@ class ProductosController extends AppController {
                 }
             } else {
                 $this->Session->setFlash('No tiene permisos para acceder a esta Pantalla<br>Comun&iacute;quese con el Administrador', 'flash_failure');
-                $this->redirect(array('controller' => 'users', 'action' => 'index'));
+                $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
             }
         } else {
             $this->Session->setFlash('Acceso denegado', 'flash_failure');
@@ -453,6 +453,7 @@ class ProductosController extends AppController {
      * @param string $value
      * @return void 
      */
+    /*
     function _refreshAuth($field = '', $value = '') {
         if (!empty($field) && !empty($value)) {
             $this->Session->write($this->Auth->sessionKey . '.' . $field, $value);
@@ -464,6 +465,8 @@ class ProductosController extends AppController {
             }
         }
     }
+     * 
+     */
 
 }
 

@@ -1,149 +1,148 @@
 <?php
-/************************* ##### CSS ##### *************************/
-echo $this->addScript($this->Html->css('reset'));		
+/* * *********************** ##### CSS ##### ************************ */
+echo $this->addScript($this->Html->css('reset'));
 echo $this->addScript($this->Html->css('cake.generic'));
 echo $this->addScript($this->Html->css('menu'));
-/************************* ##### JS ##### *************************/
+/* * *********************** ##### JS ##### ************************ */
 echo $this->addScript($this->Html->script('funciones_varias'));
-/************************* ##### UTILIZADOS ##### *************************/
-/*** jQuery - Version ***/
+/* * *********************** ##### UTILIZADOS ##### ************************ */
+/* * * jQuery - Version ** */
 echo $this->addScript($this->Html->script('jquery-1.8.3'));
-/*** Elimina borde final de las tablas ***/
+/* * * Elimina borde final de las tablas ** */
 echo $this->addScript($this->Html->css('estilo_tablas'));
-/*** alertify - Alertas ***/
+/* * * alertify - Alertas ** */
 echo $this->addScript($this->Html->script('alertify'));
-echo $this->addScript($this->Html->script('funciones_alertify'));        
+echo $this->addScript($this->Html->script('funciones_alertify'));
 echo $this->addScript($this->Html->css('alertify.core'));
 echo $this->addScript($this->Html->css('alertify.default'));
 ?>
 <?php echo $this->element('menu_gestion'); ?>
 <?php echo $this->Session->flash(); ?>
-		
+
 <table class='tabla_normal'>
-	<tr>
-		<td width="75%">
-			<div>
-				<fieldset  style='padding:3%;'><legend><h3>Enviar Noticia</h3></legend>
-				
-					<table  class='tabla_normal'>
+    <tr>
+        <td width="75%">
+            <div>
+                <fieldset  style='padding:3%;'><legend><h3>Enviar Noticia</h3></legend>
+
+                    <table  class='tabla_normal'>
                         <tr>
                             <td width="75%">
                                 <table  class='tabla_normal'>    
-                            
-						<tr>
-							<td style='text-align:right'><span><b>Fecha:&nbsp;&nbsp;&nbsp;</b></span></td>	
-							<td style='text-align:left'><span><?php echo date('d-m-Y',strtotime($noticia['Noticia']['fecha'])); ?></span></td>
-						</tr>
-						<tr>
-							<td style='text-align:right'><span><b>T&iacute;tulo:&nbsp;&nbsp;&nbsp;</b></span></td>	
-							<td style='text-align:left'><span><?php echo $noticia['Noticia']['titulo']; ?></span></td>
-						</tr>
-						<tr>
-							<td style='text-align:right'><span><b>Resumen:&nbsp;&nbsp;&nbsp;</b></span></td>	
-							<td style='text-align:left'><span><?php echo $noticia['Noticia']['resumen']; ?></span></td>
-						</tr> 
+
+                                    <tr>
+                                        <td style='text-align:right'><span><b>Fecha:&nbsp;&nbsp;&nbsp;</b></span></td>	
+                                        <td style='text-align:left'><span><?php echo date('d-m-Y', strtotime($noticia['Noticia']['fecha'])); ?></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style='text-align:right'><span><b>T&iacute;tulo:&nbsp;&nbsp;&nbsp;</b></span></td>	
+                                        <td style='text-align:left'><span><?php echo $noticia['Noticia']['titulo']; ?></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style='text-align:right'><span><b>Resumen:&nbsp;&nbsp;&nbsp;</b></span></td>	
+                                        <td style='text-align:left'><span><?php echo $noticia['Noticia']['resumen']; ?></span></td>
+                                    </tr> 
                                 </table>                           
                             </td>
-                            
+
                             <td>
-    							<?php
-    							if ($noticia['Image'] != null) {
-    								echo $this->Html->image('thumbnails/' . $noticia['Image'][0]['location'], array('alt' => $noticia['Image'][0]['name']));					
-    							}
-    							?>                             
+                                <?php
+                                if ($noticia['Image'] != null) {
+                                    echo $this->Html->image('thumbnails/' . $noticia['Image'][0]['location'], array('alt' => $noticia['Image'][0]['name']));
+                                }
+                                ?>                             
                             </td>
                         </tr>
-                      
-					</table>
-                    
+
+                    </table>
+
                     <br/><br /><br />
 
                     <div>
-				        <fieldset>               
-            		<?php
-                    
-            		echo $form->create('Noticia', array('action' => 'send', 'id' => 'form_send', 'onsubmit'=>'return verificar_checkbox_vacio();'));
-                    echo $form->hidden('id_noticia', array('value' => $noticia['Noticia']['id']));
-                    ?>
-                		<table class='tabla_normal' id="tabla_seleccion">
-                			<tr>
-                				<td>                    
-                    <?php            			
-            		echo $form->input('directores', array('type' => 'checkbox','label' => 'Directores', 'id' => 'CheckDirectores'));
-            		?>
-                                </td>
-                                <td>
-                    <?php            			
-            		echo $form->input('postulantes', array('type' => 'checkbox','label' => 'Postulantes', 'id' => 'CheckPostulantes'));
-            		?>   
-                                </td>
-                                <td>
-                    <?php            			
-            		echo $form->input('empresas', array('type' => 'checkbox','label' => 'Empresas', 'id' => 'CheckEmpresas'));
-            		?>                             
-                                </td>
-                            </tr>
-                            <tr>
-                				<td>                    
-                    <?php            			
-            		echo $form->input('uvts', array('type' => 'checkbox','label' => 'UVTs', 'id' => 'CheckUvts'));
-            		?>
-                                </td>
-                                <td>
-                    <?php            			
-            		echo $form->input('beneficiarias', array('type' => 'checkbox','label' => 'Entidades Beneficiarias', 'id' => 'CheckBeneficiarias'));
-            		?>   
-                                </td>
-                                <td>
-                    <?php            			
-            		echo $form->input('instituciones', array('type' => 'checkbox','label' => 'Instituciones', 'id' => 'CheckInstituciones'));
-            		?>                             
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                    <?php            			
-            		echo $form->input('municipios', array('type' => 'checkbox','label' => 'Municipios y Comunas', 'id' => 'CheckMunicipios'));
-            		?>                                 
-                                </td>
-                            </tr>
-                        </table>
-                    <br />
-            		<span style='float:right'>
-            		<?php		
-            		echo $form->submit('Enviar', array('after' => ' ' . $html->link('Cancelar', array('action' => 'index'))));
-            		?>
-            		</span>
-            		<?php		
-            		echo $form->end();
-            		?>                    
+                        <fieldset>               
+                            <?php
+                            echo $this->Form->create('Noticia', array('action' => 'send', 'id' => 'form_send', 'onsubmit' => 'return verificar_checkbox_vacio();'));
+                            echo $this->Form->hidden('id_noticia', array('value' => $noticia['Noticia']['id']));
+                            ?>
+                            <table class='tabla_normal' id="tabla_seleccion">
+                                <tr>
+                                    <td>                    
+                                        <?php
+                                        echo $this->Form->input('directores', array('type' => 'checkbox', 'label' => 'Directores', 'id' => 'CheckDirectores'));
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                        echo $this->Form->input('postulantes', array('type' => 'checkbox', 'label' => 'Postulantes', 'id' => 'CheckPostulantes'));
+                                        ?>   
+                                    </td>
+                                    <td>
+                                        <?php
+                                        echo $this->Form->input('empresas', array('type' => 'checkbox', 'label' => 'Empresas', 'id' => 'CheckEmpresas'));
+                                        ?>                             
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>                    
+                                        <?php
+                                        echo $this->Form->input('uvts', array('type' => 'checkbox', 'label' => 'UVTs', 'id' => 'CheckUvts'));
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                        echo $this->Form->input('beneficiarias', array('type' => 'checkbox', 'label' => 'Entidades Beneficiarias', 'id' => 'CheckBeneficiarias'));
+                                        ?>   
+                                    </td>
+                                    <td>
+                                        <?php
+                                        echo $this->Form->input('instituciones', array('type' => 'checkbox', 'label' => 'Instituciones', 'id' => 'CheckInstituciones'));
+                                        ?>                             
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <?php
+                                        echo $this->Form->input('municipios', array('type' => 'checkbox', 'label' => 'Municipios y Comunas', 'id' => 'CheckMunicipios'));
+                                        ?>                                 
+                                    </td>
+                                </tr>
+                            </table>
+                            <br />
+                            <span style='float:right'>
+                                <?php
+                                echo $this->Form->submit('Enviar', array('after' => ' ' . $this->Html->link('Cancelar', array('action' => 'index'))));
+                                ?>
+                            </span>
+                            <?php
+                            echo $this->Form->end();
+                            ?>                    
                         </fieldset>
                     </div>
-				
-				</fieldset>
-			</div>
-		</td>		
-	</tr>
+
+                </fieldset>
+            </div>
+        </td>		
+    </tr>
 </table>
 
 <!-- ########################################################################################## -->
 
 <script type='text/javascript' language='javascript'>
-    $(document).ready(function(){
-       //código a ejecutar cuando el DOM está listo para recibir instrucciones.
+    $(document).ready(function () {
+        //codigo a ejecutar cuando el DOM esta listo para recibir instrucciones.
     });
 
     function verificar_checkbox_vacio() {
         //Esta funcion la podemos encontrar en funciones_varias.js
-        var checkeados =  verificar_checkbox('tabla_seleccion','Check');
-        
+        var checkeados = verificar_checkbox('tabla_seleccion', 'Check');
+
         if (checkeados) {
-           confirmar_varios("\xbfEst\xe1 seguro que desea enviar la Noticia seleccionada?","form_send");
-           return false; //para que no se dispare el submit, asi escucha al confirm nuevo
-            
+            confirmar_varios("\xbfEst\xe1 seguro que desea enviar la Noticia seleccionada?", "form_send");
+            return false; //para que no se dispare el submit, asi escucha al confirm nuevo
+
         } else {
-           alerta("Para enviar debe seleccionar al menos un \xEDtem");
-           return false; //para que no se dispare el submmit, asi escucha al confirm nuevo
+            alerta("Para enviar debe seleccionar al menos un \xEDtem");
+            return false; //para que no se dispare el submmit, asi escucha al confirm nuevo
         }
-    } 
+    }
 </script>

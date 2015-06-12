@@ -13,17 +13,20 @@ class Producto extends AppModel {
             'className' => 'Image'
         )
     );
-    var $hasMany = array(
-        'Productoscategoria' => array(
-            'className' => 'Productoscategoria'
-        )
-    );
+    /*
+      var $hasMany = array(
+      'Productoscategoria' => array(
+      'className' => 'Productoscategoria'
+      )
+      );
+     * 
+     */
     var $validate = array(
         'titulo' => array(
             'empty' => array(
                 'rule' => 'notEmpty',
-                'required' => true,
-                'allowEmpty' => false,
+                'required' => false,
+                'allowEmpty' => true,
                 'message' => 'Titulo requerido',
             ),
             'minlength' => array(

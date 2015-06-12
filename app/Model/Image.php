@@ -38,6 +38,7 @@ class Image extends AppModel {
     // TODO: retrieve different pictures to save from root model
     function saveImage($fileData, $thumbSizeMax, $thumbSizeType, $thumbQuality) {
         App::import('Vendor', 'ccImageResize', array('file' => 'ccImageResize.class.php'));
+        //App::import('Vendor', 'ccImageResize');
         $fileData['name'] = $this->getLocationName($fileData['name']);
         $uploadedPath = WWW_ROOT . "img/original/" . $fileData['name'];
         if (move_uploaded_file($fileData['tmp_name'], $uploadedPath)) {

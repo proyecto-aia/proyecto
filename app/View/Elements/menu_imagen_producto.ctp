@@ -1,7 +1,7 @@
 <div id='cssmenu'>
     <ul>
         <li><?php echo $this->Html->link('Volver a Productos', array('controller' => 'productos', 'action' =>'search', 0)); ?></li>
-        <li><?php echo $this->Html->link('Im&aacute;genes', array('controller' => 'images', 'action' =>'index')); ?></li>	
+        <li><?php echo $this->Html->link('Imágenes', array('controller' => 'images', 'action' =>'index')); ?></li>	
     </ul>
     <!-- Panel Usuario Normal -->
     <?php echo $this->element('panel_usuario_normal'); ?>

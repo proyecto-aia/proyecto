@@ -15,11 +15,11 @@ class NoticiasController extends AppController {
     }
 
     function index() {
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         switch ($this->Auth->user('role_id')) {
             case 1:
                 $this->Session->setFlash('Acceso denegado', 'flash_failure');
-                $this->redirect(array('controller' => 'users', 'action' => 'home'));
+                $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
                 break;
             case 2:
                 $this->redirect(array('controller' => 'noticias', 'action' => 'search', 0));
@@ -31,7 +31,7 @@ class NoticiasController extends AppController {
 
     function search($buscar = 1) {
         $pantalla = 7;
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         if (($this->Auth->user('role_id') == 2) && ($this->Auth->user('status') == 'Activo')) {
             $permiso = $this->permiso_pantalla($this->Auth->user('id'), $pantalla);
             if ($permiso) {
@@ -102,7 +102,7 @@ class NoticiasController extends AppController {
                 $this->set('buscar', $buscar);
             } else {
                 $this->Session->setFlash('No tiene permisos para acceder a esta Pantalla<br>Comun&iacute;quese con el Administrador', 'flash_failure');
-                $this->redirect(array('controller' => 'users', 'action' => 'index'));
+                $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
             }
         } else {
             $this->Session->setFlash('Acceso denegado', 'flash_failure');
@@ -112,7 +112,7 @@ class NoticiasController extends AppController {
 
     function view($id = null) {
         $pantalla = 8;
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         if (($this->Auth->user('role_id') == 2) && ($this->Auth->user('status') == 'Activo')) {
             $permiso = $this->permiso_pantalla($this->Auth->user('id'), $pantalla);
             if ($permiso) {
@@ -123,7 +123,7 @@ class NoticiasController extends AppController {
                 $this->set('noticia', $this->Noticia->read(null, $id));
             } else {
                 $this->Session->setFlash('No tiene permisos para acceder a esta Pantalla<br>Comun&iacute;quese con el Administrador', 'flash_failure');
-                $this->redirect(array('controller' => 'users', 'action' => 'index'));
+                $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
             }
         } else {
             $this->Session->setFlash('Acceso denegado', 'flash_failure');
@@ -133,7 +133,7 @@ class NoticiasController extends AppController {
 
     function add() {
         $pantalla = 9;
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         if (($this->Auth->user('role_id') == 2) && ($this->Auth->user('status') == 'Activo')) {
             $permiso = $this->permiso_pantalla($this->Auth->user('id'), $pantalla);
             if ($permiso) {
@@ -152,7 +152,7 @@ class NoticiasController extends AppController {
                 }
             } else {
                 $this->Session->setFlash('No tiene permisos para acceder a esta Pantalla<br>Comun&iacute;quese con el Administrador', 'flash_failure');
-                $this->redirect(array('controller' => 'users', 'action' => 'index'));
+                $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
             }
         } else {
             $this->Session->setFlash('Acceso denegado', 'flash_failure');
@@ -162,7 +162,7 @@ class NoticiasController extends AppController {
 
     function edit($id = null) {
         $pantalla = 10;
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         if (($this->Auth->user('role_id') == 2) && ($this->Auth->user('status') == 'Activo')) {
             $permiso = $this->permiso_pantalla($this->Auth->user('id'), $pantalla);
             if ($permiso) {
@@ -190,7 +190,7 @@ class NoticiasController extends AppController {
                 }
             } else {
                 $this->Session->setFlash('No tiene permisos para acceder a esta Pantalla<br>Comun&iacute;quese con el Administrador', 'flash_failure');
-                $this->redirect(array('controller' => 'users', 'action' => 'index'));
+                $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
             }
         } else {
             $this->Session->setFlash('Acceso denegado', 'flash_failure');
@@ -200,7 +200,7 @@ class NoticiasController extends AppController {
 
     function delete() {
         $pantalla = 11;
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         if (($this->Auth->user('role_id') == 2) && ($this->Auth->user('status') == 'Activo')) {
             $permiso = $this->permiso_pantalla($this->Auth->user('id'), $pantalla);
             if ($permiso) {
@@ -227,7 +227,7 @@ class NoticiasController extends AppController {
                 $this->redirect('index');
             } else {
                 $this->Session->setFlash('No tiene permisos para acceder a esta Pantalla<br>Comun&iacute;quese con el Administrador', 'flash_failure');
-                $this->redirect(array('controller' => 'users', 'action' => 'index'));
+                $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
             }
         } else {
             $this->Session->setFlash('Acceso denegado', 'flash_failure');
@@ -237,7 +237,7 @@ class NoticiasController extends AppController {
 
     function pre_send($id = null) {
         $pantalla = 35;
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         if (($this->Auth->user('role_id') == 2) && ($this->Auth->user('status') == 'Activo')) {
             $permiso = $this->permiso_pantalla($this->Auth->user('id'), $pantalla);
             if ($permiso) {
@@ -259,7 +259,7 @@ class NoticiasController extends AppController {
                 }
             } else {
                 $this->Session->setFlash('No tiene permisos para acceder a esta Pantalla<br>Comun&iacute;quese con el Administrador', 'flash_failure');
-                $this->redirect(array('controller' => 'users', 'action' => 'index'));
+                $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
             }
         } else {
             $this->Session->setFlash('Acceso denegado', 'flash_failure');
@@ -269,7 +269,7 @@ class NoticiasController extends AppController {
 
     function send() {
         $pantalla = 35;
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         if (($this->Auth->user('role_id') == 2) && ($this->Auth->user('status') == 'Activo')) {
             $permiso = $this->permiso_pantalla($this->Auth->user('id'), $pantalla);
             if ($permiso) {
@@ -386,7 +386,7 @@ class NoticiasController extends AppController {
                 }
             } else {
                 $this->Session->setFlash('No tiene permisos para acceder a esta Pantalla<br>Comun&iacute;quese con el Administrador', 'flash_failure');
-                $this->redirect(array('controller' => 'users', 'action' => 'index'));
+                $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
             }
         } else {
             $this->Session->setFlash('Acceso denegado', 'flash_failure');
@@ -400,6 +400,7 @@ class NoticiasController extends AppController {
      * @param string $value
      * @return void 
      */
+    /*
     function _refreshAuth($field = '', $value = '') {
         if (!empty($field) && !empty($value)) {
             $this->Session->write($this->Auth->sessionKey . '.' . $field, $value);
@@ -411,6 +412,8 @@ class NoticiasController extends AppController {
             }
         }
     }
+     * 
+     */
 
 }
 

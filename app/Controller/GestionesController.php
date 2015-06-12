@@ -15,11 +15,11 @@ class GestionesController extends AppController {
     }
 
     function index() {
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         switch ($this->Auth->user('role_id')) {
             case 1:
                 $this->Session->setFlash('Acceso denegado', 'flash_failure');
-                $this->redirect(array('controller' => 'users', 'action' => 'home'));
+                $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
                 break;
             case 2:
                 if ($this->Auth->user('status') == 'Activo') {
@@ -54,6 +54,7 @@ class GestionesController extends AppController {
      * @param string $value
      * @return void 
      */
+    /*
     function _refreshAuth($field = '', $value = '') {
         if (!empty($field) && !empty($value)) {
             $this->Session->write($this->Auth->sessionKey . '.' . $field, $value);
@@ -65,6 +66,8 @@ class GestionesController extends AppController {
             }
         }
     }
+     * 
+     */
 
 }
 

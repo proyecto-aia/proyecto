@@ -1,25 +1,24 @@
 <?php
-
-/************************* ##### CSS ##### *************************/
-echo $this->addScript($this->Html->css('reset'));		
+/* * *********************** ##### CSS ##### ************************ */
+echo $this->addScript($this->Html->css('reset'));
 echo $this->addScript($this->Html->css('cake.generic'));
 echo $this->addScript($this->Html->css('menu'));
-/************************* ##### UTILIZADOS ##### *************************/
-/*** jQuery - Version ***/
+/* * *********************** ##### UTILIZADOS ##### ************************ */
+/* * * jQuery - Version ** */
 echo $this->addScript($this->Html->script('jquery-1.8.3'));
-/*** Elimina borde final de las tablas ***/
+/* * * Elimina borde final de las tablas ** */
 echo $this->addScript($this->Html->css('estilo_tablas'));
-/*** mask - Mascaras para campos ***/
+/* * * mask - Mascaras para campos ** */
 echo $this->addScript($this->Html->script('jquery.mask'));
-/*** Validate con estilos css modificados en el .js ***/
+/* * * Validate con estilos css modificados en el .js ** */
 echo $this->addScript($this->Html->script('jquery.validate'));
 echo $this->addScript($this->Html->script('jquery.corner'));
-/*** datePicker - Calendario ***/
+/* * * datePicker - Calendario ** */
 echo $this->addScript($this->Html->script('jquery.datePicker'));
 echo $this->addScript($this->Html->script('date'));
-echo $this->addScript($this->Html->script('cake.datePicker'));        
+echo $this->addScript($this->Html->script('cake.datePicker'));
 echo $this->addScript($this->Html->css('datePicker'));
-/*** tinymce - Editor de texto ***/
+/* * * tinymce - Editor de texto ** */
 echo $this->addScript($this->Html->script('../js/tinymce/tinymce.min'));
 ?>
 <?php echo $this->element('menu_gestion'); ?>
@@ -30,22 +29,22 @@ echo $this->addScript($this->Html->script('../js/tinymce/tinymce.min'));
         <td>
             <div style='width:75%'>
                 <fieldset style='padding:3%;'><legend><h3>Agregar nuevo Album</h3></legend>
-		<?php
-		echo $this->Form->create('Album', array('id' => 'agregar'));
-		//echo $this->Form->input('fecha', array('label' => 'Fecha', 'id' => 'fecha'));		
-		echo $datePicker->picker('fecha', array('id' => 'fecha', 'label' => 'Fecha'));
-		echo $this->Form->input('titulo', array('label' => 'T&iacute;tulo', 'class' => 'required', 'minLength' => '3', 'id' => 'titulo'));
-		echo $this->Form->input('descripcion', array('type' => 'textarea', 'label' => 'Descripci&oacute;n', 'class' => 'required', 'minLength' => '3', 'id' => 'descripcion'));        
-		echo $this->Form->input('status', array('options' => array('Activo' => 'Activo', 'Inactivo' => 'Inactivo'), 'label' => 'Estado', 'id' => 'status'));
-		?>
+                    <?php
+                    echo $this->Form->create('Album', array('id' => 'agregar'));
+                    echo $this->Form->input('fecha', array('label' => 'Fecha', 'id' => 'fecha'));
+                    //echo $datePicker->picker('fecha', array('id' => 'fecha', 'label' => 'Fecha'));
+                    echo $this->Form->input('titulo', array('label' => 'T&iacute;tulo', 'class' => 'required', 'minLength' => '3', 'id' => 'titulo'));
+                    echo $this->Form->input('descripcion', array('type' => 'textarea', 'label' => 'Descripci&oacute;n', 'class' => 'required', 'minLength' => '3', 'id' => 'descripcion'));
+                    echo $this->Form->input('status', array('options' => array('Activo' => 'Activo', 'Inactivo' => 'Inactivo'), 'label' => 'Estado', 'id' => 'status'));
+                    ?>
                     <span style='float:right'>
-		<?php		
-		echo $this->Form->submit('Agregar', array('after' => ' ' . $this->Html->link('Cancelar', array('action' => 'index'))));
-		?>
+                        <?php
+                        echo $this->Form->submit('Agregar', array('after' => ' ' . $this->Html->link('Cancelar', array('action' => 'index'))));
+                        ?>
                     </span>
-		<?php		
-		echo $this->Form->end();
-		?>
+                    <?php
+                    echo $this->Form->end();
+                    ?>
                 </fieldset>
             </div>
         </td>		

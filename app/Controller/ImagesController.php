@@ -15,11 +15,11 @@ class ImagesController extends AppController {
     }
 
     function index($modulo = null, $id = null) {
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         switch ($this->Auth->user('role_id')) {
             case 1:
                 $this->Session->setFlash('Acceso denegado', 'flash_failure');
-                $this->redirect(array('controller' => 'users', 'action' => 'home'));
+                $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
                 break;
             case 2:
                 if (($this->Auth->user('role_id') == 2) && ($this->Auth->user('status') == 'Activo')) {
@@ -86,7 +86,7 @@ class ImagesController extends AppController {
                             }
                         } else {
                             $this->Session->setFlash('No tiene permisos para acceder a esta Pantalla<br>Comun&iacute;quese con el Administrador', 'flash_failure');
-                            $this->redirect(array('controller' => 'users', 'action' => 'index'));
+                            $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
                         }
                     } else {
                         if ($this->Session->check('modulo') and $this->Session->check('modulo_id')) {
@@ -221,7 +221,7 @@ class ImagesController extends AppController {
                                 }
                             } else {
                                 $this->Session->setFlash('No tiene permisos para acceder a esta Pantalla<br>Comun&iacute;quese con el Administrador', 'flash_failure');
-                                $this->redirect(array('controller' => 'users', 'action' => 'index'));
+                                $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
                             }
                         } else {
                             $this->Session->setFlash('Error con variables de sesi&oacute;n<br>Comun&iacute;quese con el Administrador', 'flash_failure');
@@ -235,7 +235,7 @@ class ImagesController extends AppController {
                         $this->redirect(array('controller' => 'users', 'action' => 'inactivo'));
                     } else {
                         $this->Session->setFlash('Acceso denegado', 'flash_failure');
-                        $this->redirect(array('controller' => 'users', 'action' => 'index'));
+                        $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
                     }
                 }
                 break;
@@ -245,7 +245,7 @@ class ImagesController extends AppController {
     }
 
     function view($id = null) {
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         if (($this->Auth->user('role_id') == 2) && ($this->Auth->user('status') == 'Activo')) {
             //$array_pantallas = array(13,43,57);
             //$permiso = $this->permiso_array_pantallas($this->Auth->user('id'),$array_pantallas);
@@ -286,7 +286,7 @@ class ImagesController extends AppController {
                 $this->set('image', $this->Image->read(null, $id));
             } else {
                 $this->Session->setFlash('No tiene permisos para acceder a esta Pantalla<br>Comun&iacute;quese con el Administrador', 'flash_failure');
-                $this->redirect(array('controller' => 'users', 'action' => 'index'));
+                $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
             }
         } else {
             $this->Session->setFlash('Acceso denegado', 'flash_failure');
@@ -295,7 +295,7 @@ class ImagesController extends AppController {
     }
 
     function add() {
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         if (($this->Auth->user('role_id') == 2) && ($this->Auth->user('status') == 'Activo')) {
             //$array_pantallas = array(14,44,58);
             //$permiso = $this->permiso_array_pantallas($this->Auth->user('id'),$array_pantallas);
@@ -381,7 +381,7 @@ class ImagesController extends AppController {
                 }
             } else {
                 $this->Session->setFlash('No tiene permisos para acceder a esta Pantalla<br>Comun&iacute;quese con el Administrador', 'flash_failure');
-                $this->redirect(array('controller' => 'users', 'action' => 'index'));
+                $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
             }
         } else {
             $this->Session->setFlash('Acceso denegado', 'flash_failure');
@@ -390,7 +390,7 @@ class ImagesController extends AppController {
     }
 
     function edit($id = null) {
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         if (($this->Auth->user('role_id') == 2) && ($this->Auth->user('status') == 'Activo')) {
             //$array_pantallas = array(15,45,59);
             //$permiso = $this->permiso_array_pantallas($this->Auth->user('id'),$array_pantallas);
@@ -467,7 +467,7 @@ class ImagesController extends AppController {
                 }
             } else {
                 $this->Session->setFlash('No tiene permisos para acceder a esta Pantalla<br>Comun&iacute;quese con el Administrador', 'flash_failure');
-                $this->redirect(array('controller' => 'users', 'action' => 'index'));
+                $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
             }
         } else {
             $this->Session->setFlash('Acceso denegado', 'flash_failure');
@@ -476,7 +476,7 @@ class ImagesController extends AppController {
     }
 
     function delete($id = null) {
-        $this->_refreshAuth();
+        //$this->_refreshAuth();
         if (($this->Auth->user('role_id') == 2) && ($this->Auth->user('status') == 'Activo')) {
             //$array_pantallas = array(16,46,60);
             //$permiso = $this->permiso_array_pantallas($this->Auth->user('id'),$array_pantallas);
@@ -509,7 +509,7 @@ class ImagesController extends AppController {
                 $this->redirect('index');
             } else {
                 $this->Session->setFlash('No tiene permisos para acceder a esta Pantalla<br>Comun&iacute;quese con el Administrador', 'flash_failure');
-                $this->redirect(array('controller' => 'users', 'action' => 'index'));
+                $this->redirect(array('controller' => 'users', 'action' => 'redireccion'));
             }
         } else {
             $this->Session->setFlash('Acceso denegado', 'flash_failure');
@@ -523,6 +523,7 @@ class ImagesController extends AppController {
      * @param string $value
      * @return void 
      */
+    /*
     function _refreshAuth($field = '', $value = '') {
         if (!empty($field) && !empty($value)) {
             $this->Session->write($this->Auth->sessionKey . '.' . $field, $value);
@@ -534,6 +535,8 @@ class ImagesController extends AppController {
             }
         }
     }
+     * 
+     */
 
 }
 

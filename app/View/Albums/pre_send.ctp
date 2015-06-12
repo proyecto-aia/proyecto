@@ -1,19 +1,18 @@
 <?php
-
-/************************* ##### CSS ##### *************************/
-echo $this->addScript($this->Html->css('reset'));		
+/* * *********************** ##### CSS ##### ************************ */
+echo $this->addScript($this->Html->css('reset'));
 echo $this->addScript($this->Html->css('cake.generic'));
 echo $this->addScript($this->Html->css('menu'));
-/************************* ##### JS ##### *************************/
+/* * *********************** ##### JS ##### ************************ */
 echo $this->addScript($this->Html->script('funciones_varias'));
-/************************* ##### UTILIZADOS ##### *************************/
-/*** jQuery - Version ***/
+/* * *********************** ##### UTILIZADOS ##### ************************ */
+/* * * jQuery - Version ** */
 echo $this->addScript($this->Html->script('jquery-1.8.3'));
-/*** Elimina borde final de las tablas ***/
+/* * * Elimina borde final de las tablas ** */
 echo $this->addScript($this->Html->css('estilo_tablas'));
-/*** alertify - Alertas ***/
+/* * * alertify - Alertas ** */
 echo $this->addScript($this->Html->script('alertify'));
-echo $this->addScript($this->Html->script('funciones_alertify'));        
+echo $this->addScript($this->Html->script('funciones_alertify'));
 echo $this->addScript($this->Html->css('alertify.core'));
 echo $this->addScript($this->Html->css('alertify.default'));
 ?>
@@ -33,7 +32,7 @@ echo $this->addScript($this->Html->css('alertify.default'));
 
                                     <tr>
                                         <td style='text-align:right'><span><b>Fecha:&nbsp;&nbsp;&nbsp;</b></span></td>	
-                                        <td style='text-align:left'><span><?php echo date('d-m-Y',strtotime($album['Album']['fecha'])); ?></span></td>
+                                        <td style='text-align:left'><span><?php echo date('d-m-Y', strtotime($album['Album']['fecha'])); ?></span></td>
                                     </tr>
                                     <tr>
                                         <td style='text-align:right'><span><b>T&iacute;tulo:&nbsp;&nbsp;&nbsp;</b></span></td>	
@@ -45,7 +44,7 @@ echo $this->addScript($this->Html->css('alertify.default'));
                             <td>
                                 <?php
                                 if ($album['Image'] != null) {
-                                        echo $this->Html->image('thumbnails/' . $album['Image'][0]['location'], array('alt' => $album['Image'][0]['name']));					
+                                    echo $this->Html->image('thumbnails/' . $album['Image'][0]['location'], array('alt' => $album['Image'][0]['name']));
                                 }
                                 ?>                             
                             </td>
@@ -57,62 +56,62 @@ echo $this->addScript($this->Html->css('alertify.default'));
 
                     <div>
                         <fieldset>               
-                    <?php                    
-            		echo $this->Form->create('Album', array('action' => 'send', 'id' => 'form_send', 'onsubmit'=>'return verificar_checkbox_vacio();'));
-                        echo $this->Form->hidden('id_album', array('value' => $album['Album']['id']));
-                    ?>
+                            <?php
+                            echo $this->Form->create('Album', array('action' => 'send', 'id' => 'form_send', 'onsubmit' => 'return verificar_checkbox_vacio();'));
+                            echo $this->Form->hidden('id_album', array('value' => $album['Album']['id']));
+                            ?>
                             <table class='tabla_normal' id="tabla_seleccion">
                                 <tr>
                                     <td>                    
-                    <?php            			
-            		echo $this->Form->input('directores', array('type' => 'checkbox','label' => 'Directores', 'id' => 'CheckDirectores'));
-                    ?>
+                                        <?php
+                                        echo $this->Form->input('directores', array('type' => 'checkbox', 'label' => 'Directores', 'id' => 'CheckDirectores'));
+                                        ?>
                                     </td>
                                     <td>
-                    <?php            			
-            		echo $this->Form->input('postulantes', array('type' => 'checkbox','label' => 'Postulantes', 'id' => 'CheckPostulantes'));
-                    ?>   
+                                        <?php
+                                        echo $this->Form->input('postulantes', array('type' => 'checkbox', 'label' => 'Postulantes', 'id' => 'CheckPostulantes'));
+                                        ?>   
                                     </td>
                                     <td>
-                    <?php            			
-            		echo $this->Form->input('empresas', array('type' => 'checkbox','label' => 'Empresas', 'id' => 'CheckEmpresas'));
-                    ?>                             
+                                        <?php
+                                        echo $this->Form->input('empresas', array('type' => 'checkbox', 'label' => 'Empresas', 'id' => 'CheckEmpresas'));
+                                        ?>                             
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>                    
-                    <?php            			
-            		echo $this->Form->input('uvts', array('type' => 'checkbox','label' => 'UVTs', 'id' => 'CheckUvts'));
-                    ?>
+                                        <?php
+                                        echo $this->Form->input('uvts', array('type' => 'checkbox', 'label' => 'UVTs', 'id' => 'CheckUvts'));
+                                        ?>
                                     </td>
                                     <td>
-                    <?php            			
-            		echo $this->Form->input('beneficiarias', array('type' => 'checkbox','label' => 'Entidades Beneficiarias', 'id' => 'CheckBeneficiarias'));
-                    ?>   
+                                        <?php
+                                        echo $this->Form->input('beneficiarias', array('type' => 'checkbox', 'label' => 'Entidades Beneficiarias', 'id' => 'CheckBeneficiarias'));
+                                        ?>   
                                     </td>
                                     <td>
-                    <?php            			
-            		echo $this->Form->input('instituciones', array('type' => 'checkbox','label' => 'Instituciones', 'id' => 'CheckInstituciones'));
-                    ?>                             
+                                        <?php
+                                        echo $this->Form->input('instituciones', array('type' => 'checkbox', 'label' => 'Instituciones', 'id' => 'CheckInstituciones'));
+                                        ?>                             
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                    <?php            			
-            		echo $this->Form->input('municipios', array('type' => 'checkbox','label' => 'Municipios y Comunas', 'id' => 'CheckMunicipios'));
-                    ?>                                 
+                                        <?php
+                                        echo $this->Form->input('municipios', array('type' => 'checkbox', 'label' => 'Municipios y Comunas', 'id' => 'CheckMunicipios'));
+                                        ?>                                 
                                     </td>
                                 </tr>
                             </table>
                             <br />
                             <span style='float:right'>
-            		<?php		
-            		echo $this->Form->submit('Enviar', array('after' => ' ' . $this->Html->link('Cancelar', array('action' => 'index'))));
-            		?>
+                                <?php
+                                echo $this->Form->submit('Enviar', array('after' => ' ' . $this->Html->link('Cancelar', array('action' => 'index'))));
+                                ?>
                             </span>
-            		<?php		
-            		echo $this->Form->end();
-            		?>                    
+                            <?php
+                            echo $this->Form->end();
+                            ?>                    
                         </fieldset>
                     </div>
 

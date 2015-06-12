@@ -12,8 +12,8 @@ class Noticia extends AppModel {
         'titulo' => array(
             'empty' => array(
                 'rule' => 'notEmpty',
-                'required' => true,
-                'allowEmpty' => false,
+                'required' => false,
+                'allowEmpty' => true,
                 'message' => 'Titulo requerido',
             ),
             'minlength' => array(
