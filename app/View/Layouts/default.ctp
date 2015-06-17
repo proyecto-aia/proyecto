@@ -27,6 +27,13 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
         echo $this->Html->meta('favicon.ico', '/favicon.ico', array('type' => 'icon'));
         echo $scripts_for_layout;
         ?>
+
+        <!-- Variable definida aca para poder usarla en todos lados. Nos lleva al root de nuestra aplicacion.
+        Utilizada en el script de datepicker.js -->
+        <script type="text/javascript">
+            var basePath = "<?php echo Router::url('/'); ?>"
+        </script>
+        
     </head>
     <body>
         <div id="container">

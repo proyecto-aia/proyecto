@@ -14,10 +14,9 @@ echo $this->addScript($this->Html->script('jquery.mask'));
 echo $this->addScript($this->Html->script('jquery.validate'));
 echo $this->addScript($this->Html->script('jquery.corner'));
 /* * * datePicker - Calendario ** */
-echo $this->addScript($this->Html->script('jquery.datePicker'));
-echo $this->addScript($this->Html->script('date'));
-echo $this->addScript($this->Html->script('cake.datePicker'));
-echo $this->addScript($this->Html->css('datePicker'));
+echo $this->addScript($this->Html->script('jquery-ui'));
+echo $this->addScript($this->Html->script('jquery-ui.datepicker'));
+echo $this->addScript($this->Html->css('jquery-ui'));
 /* * * tinymce - Editor de texto ** */
 echo $this->addScript($this->Html->script('../js/tinymce/tinymce.min'));
 ?>
@@ -31,7 +30,13 @@ echo $this->addScript($this->Html->script('../js/tinymce/tinymce.min'));
                 <fieldset style='padding:3%;'><legend><h3>Agregar nuevo Album</h3></legend>
                     <?php
                     echo $this->Form->create('Album', array('id' => 'agregar'));
-                    echo $this->Form->input('fecha', array('label' => 'Fecha', 'id' => 'fecha'));
+                     
+                    echo $this->Form->input('fecha', array(   'id'=>'datepicker1',  /*Id que llamara al script de "datepicker"*/
+                                                              'type'=>'text',
+                                                              'placeholder' => 'Seleccione una fecha...',
+                                                              'readonly' => 'readonly'
+                                                              /*'class' => 'required'*/));
+
                     //echo $datePicker->picker('fecha', array('id' => 'fecha', 'label' => 'Fecha'));
                     echo $this->Form->input('titulo', array('label' => 'T&iacute;tulo', 'class' => 'required', 'minLength' => '3', 'id' => 'titulo'));
                     echo $this->Form->input('descripcion', array('type' => 'textarea', 'label' => 'Descripci&oacute;n', 'class' => 'required', 'minLength' => '3', 'id' => 'descripcion'));

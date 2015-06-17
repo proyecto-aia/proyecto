@@ -29,7 +29,7 @@ class ProductosController extends AppController {
         }
     }
 
-    function search($buscar = 1) {
+    public function search($buscar = 1) {
         $pantalla = 36;
         //$this->_refreshAuth();
         if (($this->Auth->user('role_id') == 2) && ($this->Auth->user('status') == 'Activo')) {
@@ -59,14 +59,14 @@ class ProductosController extends AppController {
                     $estado = $this->request->data['Producto']['status'];
 
                     if ($codigo != "") {
-                        //$conditions1 = array('User.username' => $username); 
+                        //$conditions1 = array('User.username' => $username);
                         $conditions5 = array('Producto.codigo LIKE' => "%" . $codigo . "%");
                     } else {
                         $conditions5 = "true";
                     }
 
                     if ($titulo != "") {
-                        //$conditions1 = array('User.username' => $username); 
+                        //$conditions1 = array('User.username' => $username);
                         $conditions4 = array('Producto.titulo LIKE' => "%" . $titulo . "%");
                     } else {
                         $conditions4 = "true";
@@ -84,37 +84,39 @@ class ProductosController extends AppController {
                         $conditions2 = "true";
                     }
 
-                    if (($this->request->data['Producto']['fecha_ini']['year'] != "") AND ( $this->request->data['Producto']['fecha_ini']['month'] != "") AND ( $this->request->data['Producto']['fecha_ini']['day'] != "") AND ( $this->request->data['Producto']['fecha_fin']['year'] != "") AND ( $this->request->data['Producto']['fecha_fin']['month'] != "") AND ( $this->request->data['Producto']['fecha_fin']['day'] != "")
-                    ) {
+                   if (($this->request->data['Producto']['fecha_ini'] != "") AND ( $this->request->data['Producto']['fecha_fin'] != "")) {
 
-                        $fecha_ini = $this->request->data['Producto']['fecha_ini']['year'] . "-" . $this->request->data['Producto']['fecha_ini']['month'] . "-" . $this->request->data['Producto']['fecha_ini']['day'];
-                        $fecha_fin = $this->request->data['Producto']['fecha_fin']['year'] . "-" . $this->request->data['Producto']['fecha_fin']['month'] . "-" . $this->request->data['Producto']['fecha_fin']['day'];
+                        $fecha_ini =  date('Y-m-d', strtotime($this->data['Producto']['fecha_ini']));
+                        $fecha_fin =  date('Y-m-d', strtotime($this->data['Producto']['fecha_fin']));
 
-                        if ((date(strtotime($fecha_ini))) <= (date(strtotime($fecha_fin)))) {
+
+
+                        if ($fecha_ini <= $fecha_fin) {
 
                             $conditions1 = array('Producto.fecha between ? and ?' => array($fecha_ini, $fecha_fin));
                         } else {
                             $this->Session->setFlash('La fecha de Inicio es mayor que la fecha de Fin', 'flash_failure');
                             $this->redirect('index');
                         }
-                    } else if (($this->request->data['Producto']['fecha_ini']['year'] == "") AND ( $this->request->data['Producto']['fecha_ini']['month'] == "") AND ( $this->request->data['Producto']['fecha_ini']['day'] == "") AND ( $this->request->data['Producto']['fecha_fin']['year'] == "") AND ( $this->request->data['Producto']['fecha_fin']['month'] == "") AND ( $this->request->data['Producto']['fecha_fin']['day'] == "")
-                    ) {
+                        /*ambas vacias*/
+                    } else if (($this->request->data['Producto']['fecha_ini'] == "") AND ($this->request->data['Producto']['fecha_fin'] == ""))
+                     {
 
                         $conditions1 = "true";
-                    } else if (($this->request->data['Producto']['fecha_ini']['year'] == "") AND ( $this->request->data['Producto']['fecha_ini']['month'] == "") AND ( $this->request->data['Producto']['fecha_ini']['day'] == "") AND ( $this->request->data['Producto']['fecha_fin']['year'] != "") AND ( $this->request->data['Producto']['fecha_fin']['month'] != "") AND ( $this->request->data['Producto']['fecha_fin']['day'] != "")
-                    ) {
+                        /*fecha_ini vacia y fecha_fin con algo*/
+                    } else if (($this->request->data['Producto']['fecha_ini'] == "") AND ($this->request->data['Producto']['fecha_fin'] != ""))
+                     {
 
-
-                        $fecha_fin = $this->request->data['Producto']['fecha_fin']['year'] . "-" . $this->request->data['Producto']['fecha_fin']['month'] . "-" . $this->request->data['Producto']['fecha_fin']['day'];
-
+                        $fecha_fin =  date('Y-m-d', strtotime($this->data['Producto']['fecha_fin']));
                         $conditions1 = array('Producto.fecha <= ?' => array($fecha_fin));
-                    } else if (($this->request->data['Producto']['fecha_ini']['year'] != "") AND ( $this->request->data['Producto']['fecha_ini']['month'] != "") AND ( $this->request->data['Producto']['fecha_ini']['day'] != "") AND ( $this->request->data['Producto']['fecha_fin']['year'] == "") AND ( $this->request->data['Producto']['fecha_fin']['month'] == "") AND ( $this->request->data['Producto']['fecha_fin']['day'] == "")
-                    ) {
 
+                        /*fecha_ini con algo y fecha_fin vacia*/
+                    } else if (($this->request->data['Producto']['fecha_ini'] != "") AND ($this->request->data['Producto']['fecha_fin'] == ""))
+                     {
 
-                        $fecha_ini = $this->request->data['Producto']['fecha_ini']['year'] . "-" . $this->request->data['Producto']['fecha_ini']['month'] . "-" . $this->request->data['Producto']['fecha_ini']['day'];
-
+                        $fecha_ini =  date('Y-m-d', strtotime($this->data['Producto']['fecha_ini']));
                         $conditions1 = array('Producto.fecha >= ?' => array($fecha_ini));
+
                     } else {
                         $this->Session->setFlash('Debe ingresar una Fecha v&aacute;lida', 'flash_failure');
                         $this->redirect('index');
@@ -161,6 +163,8 @@ class ProductosController extends AppController {
     }
 
     function add() {
+
+
         $pantalla = 38;
         //$this->_refreshAuth();
         if (($this->Auth->user('role_id') == 2) && ($this->Auth->user('status') == 'Activo')) {
@@ -175,6 +179,16 @@ class ProductosController extends AppController {
                 $this->set('monedas', $monedas);
 
                 if (!empty($this->request->data)) {
+
+                     /*Si es vacio asigno fecha actual */
+                    if($this->request->data['Producto']['fecha'] == ''){
+                        $this->request->data['Producto']['fecha'] =  date("Y-m-d");
+                    }
+                    else{
+                        /*Para girar la fecha */
+                        $this->request->data['Producto']['fecha'] = date('Y-m-d', strtotime($this->data['Producto']['fecha']));
+                    }
+
                     $this->Producto->set($this->request->data);
                     if ($this->Producto->validates()) {
                         $this->Producto->save($this->request->data, false);

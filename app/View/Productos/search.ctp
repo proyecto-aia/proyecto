@@ -30,12 +30,12 @@ echo $this->addScript($this->Html->script('funciones_alertify'));
 echo $this->addScript($this->Html->css('alertify.core'));
 echo $this->addScript($this->Html->css('alertify.default'));
 /* * * datePicker - Calendario ** */
-echo $this->addScript($this->Html->script('jquery.datePicker'));
-echo $this->addScript($this->Html->script('date'));
-echo $this->addScript($this->Html->script('cake.datePicker'));
-echo $this->addScript($this->Html->css('datePicker'));
+echo $this->addScript($this->Html->script('jquery-ui'));
+echo $this->addScript($this->Html->script('jquery-ui.datepicker'));
+echo $this->addScript($this->Html->css('jquery-ui'));
+
 /* * * Estilos para botone/iconos/etc... ** */
-echo $this->addScript($this->addScript($this->Html->css('button')));
+echo $this->addScript($this->Html->css('button'));
 ?>
 <?php echo $this->element('menu_gestion'); ?>
 <?php echo $this->Session->flash(); ?>
@@ -53,14 +53,24 @@ echo $this->addScript($this->addScript($this->Html->css('button')));
                             <td>
                                 <?php
                                 //echo $datePicker->picker('fecha_ini', array('id' => 'fecha_ini', 'label' => 'Fecha Inicio', 'empty' => true));
-                                echo $this->Form->input('fecha_ini', array('id' => 'fecha_ini', 'label' => 'Fecha Inicio', 'empty' => true));
+                                 echo $this->Form->input('fecha_ini', array('id'=>'datepicker1',
+                                                                           'type'=>'text',
+                                                                           'placeholder' => 'Seleccione una fecha...',
+                                                                           'label' => 'Fecha Inicio',
+                                                                           'readonly' => 'readonly',
+                                                                           'empty' => true));
                                 ?>
                             </td>
 
                             <td>
                                 <?php
                                 //echo $datePicker->picker('fecha_fin', array('id' => 'fecha_fin', 'label' => 'Fecha Fin', 'empty' => true));
-                                echo $this->Form->input('fecha_fin', array('id' => 'fecha_fin', 'label' => 'Fecha Fin', 'empty' => true));
+                                echo $this->Form->input('fecha_fin', array('id'=>'datepicker2',
+                                                                           'type'=>'text',
+                                                                           'placeholder' => 'Seleccione una fecha...',
+                                                                           'label' => 'Fecha Fin',
+                                                                           'readonly' => 'readonly',
+                                                                           'empty' => true));
                                 ?>
                             </td>
 
@@ -177,7 +187,6 @@ echo $this->addScript($this->addScript($this->Html->css('button')));
     $(document).ready(function () {
         //codigo a ejecutar cuando el DOM esta listo para recibir instrucciones.
         $('#search').validate();
-        ml
     });
 
     function verificar_checkbox_vacio() {
